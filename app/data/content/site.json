@@ -1,0 +1,99 @@
+{
+  "brand": {
+    "name": "SuloSethuSolution",
+    "name_prefix": "SuloSethu",
+    "name_suffix": "Solution",
+    "mark": "SSS",
+    "tagline": "Build · Train · Launch"
+  },
+  "code_tabs": {
+    "filename": "career.launch",
+    "tabs": [
+      {
+        "id": "projects",
+        "label": "Live Projects",
+        "icon": "fa-solid fa-diagram-project",
+        "code": [
+          "def launch_career(student):",
+          "    build_projects(student)",
+          "    deploy_real_apps(student)",
+          "    return \"industry_ready\""
+        ],
+        "items": ["Real Client Projects", "GitHub Contributions", "Portfolio Development", "Team Collaboration"]
+      },
+      {
+        "id": "certs",
+        "label": "Certifications",
+        "icon": "fa-solid fa-certificate",
+        "code": [
+          "def certify(student):",
+          "    complete_training(student)",
+          "    pass_assessments(student)",
+          "    return \"certified\""
+        ],
+        "items": ["Industry Recognized Certificate", "Course Completion Certificate", "Skill Assessment Report", "Digital Verification"]
+      },
+      {
+        "id": "placement",
+        "label": "Placement Assistance",
+        "icon": "fa-solid fa-briefcase",
+        "code": [
+          "def placement(student):",
+          "    resume_building(student)",
+          "    interview_preparation(student)",
+          "    return \"placed\""
+        ],
+        "items": ["Resume Preparation", "Mock Interviews", "Career Guidance", "Job Referrals", "Placement Support"]
+      }
+    ]
+  },
+  "company": {
+    "address": "4th Floor, Tech Tower, Anna Salai, Chennai, Tamil Nadu 600002",
+    "phone": "+91 90000 12345",
+    "phone_secondary": "+91 90000 67890",
+    "email": "hello@sulosethu.com",
+    "email_secondary": "careers@sulosethu.com",
+    "website": "www.sulosethu.com",
+    "working_hours": "Mon – Sat · 9:00 AM – 6:00 PM"
+  },
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Internship", "href": "/internship" },
+    { "label": "Training", "href": "/training" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "nav_cta": { "label": "Get Started", "href": "/contact" },
+  "social": [
+    { "label": "LinkedIn", "abbr": "in", "href": "#" },
+    { "label": "GitHub", "abbr": "GH", "href": "#" },
+    { "label": "Facebook", "abbr": "f", "href": "#" },
+    { "label": "Instagram", "abbr": "IG", "href": "#" }
+  ],
+  "footer": {
+    "about": "Engineering digital products and the talent to build them — software development, professional training, and industry-focused internships under one roof.",
+    "columns": [
+      {
+        "title": "Quick Links",
+        "links": [
+          { "label": "Home", "href": "/" },
+          { "label": "About Us", "href": "/about" },
+          { "label": "Services", "href": "/services" },
+          { "label": "Internship", "href": "/internship" },
+          { "label": "Training", "href": "/training" },
+          { "label": "Contact", "href": "/contact" }
+        ]
+      },
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Software Development", "href": "/services" },
+          { "label": "Training", "href": "/training" },
+          { "label": "Internship", "href": "/internship" },
+          { "label": "Request a Quote", "href": "/services#quote" }
+        ]
+      }
+    ]
+  }
+}

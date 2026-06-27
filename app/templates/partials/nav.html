@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg fixed-top site-nav" aria-label="Primary">
+  <div class="container">
+    <a class="navbar-brand brand" href="/">
+      <span class="brand-mark">{{ site.brand.mark }}</span>
+      <span class="brand-name">{{ site.brand.name_prefix }}<span class="grad-text">{{ site.brand.name_suffix }}</span></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-bar"></span><span class="toggler-bar"></span><span class="toggler-bar"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        {% for item in site.nav %}
+        <li class="nav-item"><a class="nav-link {{ 'active' if request.url.path == item.href else '' }}" href="{{ item.href }}">{{ item.label }}</a></li>
+        {% endfor %}
+        <li class="nav-item"><button type="button" class="mode-toggle" aria-label="Toggle dark/light mode"><i class="fa-solid fa-sun"></i></button></li>
+        <li class="nav-item ms-lg-2"><a class="btn btn-glow btn-sm" href="{{ site.nav_cta.href }}">{{ site.nav_cta.label }}</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

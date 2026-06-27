@@ -1,0 +1,17 @@
+{% extends "admin/base_admin.html" %}
+{% block body %}
+<a href="/admin/content" style="color:var(--muted)">← All content</a>
+{% if saved %}<div class="flash ok" style="margin-top:1rem">Saved! Your changes are live.</div>{% endif %}
+{% if error %}<div class="flash err" style="margin-top:1rem">{{ error }}</div>{% endif %}
+<div class="glass panel" style="margin-top:1rem">
+  <h3>Editing <span class="grad-text">{{ key }}</span></h3>
+  <p style="color:var(--muted);font-size:.9rem">Valid JSON only. The structure must match what the page template expects — change values freely, keep the keys.</p>
+  <form method="post" action="/admin/content/{{ key }}" class="admin-form" style="max-width:none">
+    <textarea class="code" name="payload" spellcheck="false">{{ raw }}</textarea>
+    <div style="display:flex;gap:.7rem">
+      <button class="btn btn-glow" type="submit">Save Changes</button>
+      <a class="btn btn-ghost" href="/{{ '' if key in ['site','home'] else key }}" target="_blank">↗ Preview Page</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{
+  "meta_title": "Contact — SuloSethuSolution",
+  "meta_description": "Get in touch for software development, training, or internship opportunities.",
+  "hero": {
+    "pill_icon": "fa-solid fa-headset",
+    "pill": "Contact us",
+    "title_lead": "Let's Build Something",
+    "title_grad": "Amazing Together",
+    "subtitle": "Whether you're looking for software development services, professional training, or internship opportunities, we're here to help you achieve your goals.",
+    "buttons": [
+      { "label": "Get a Free Consultation", "href": "#form", "style": "glow" },
+      { "label": "Contact Our Team", "href": "#info", "style": "ghost" }
+    ]
+  },
+  "info_cards": {
+    "eyebrow": "Reach us",
+    "title_lead": "Contact",
+    "title_grad": "information"
+  },
+  "form": {
+    "eyebrow": "Inquiry form",
+    "title_lead": "Send us a",
+    "title_grad": "message",
+    "highlights": ["Fast Response", "Free Consultation", "Project Discussion", "Career Guidance", "Training Support"],
+    "inquiry_types": ["Software Development", "Training", "Internship", "Corporate Training", "General Inquiry"]
+  },
+  "map": {
+    "embed": "https://www.openstreetmap.org/export/embed.html?bbox=80.23%2C13.02%2C80.29%2C13.10&layer=mapnik",
+    "title": "SuloSethuSolution office location"
+  },
+  "faqs": {
+    "eyebrow": "FAQ",
+    "title_lead": "Frequently asked",
+    "title_grad": "questions",
+    "items": [
+      { "icon": "fa-solid fa-graduation-cap", "q": "How do I enroll?", "a": "Choose your preferred course and complete the enrollment form. Our team will contact you with the next steps." },
+      { "icon": "fa-solid fa-briefcase", "q": "How can I request a quote?", "a": "Submit the contact form with your project details, and our team will provide a customized quotation." },
+      { "icon": "fa-solid fa-gears", "q": "What technologies do you support?", "a": "Python, .NET, Java, React, Angular, Flutter, SQL Server, AWS, Azure, and AI & Machine Learning." },
+      { "icon": "fa-solid fa-rocket", "q": "Do you provide placement assistance?", "a": "Yes — resume guidance, mock interviews, career mentoring, and placement assistance for eligible participants." }
+    ]
+  },
+  "social_hub": {
+    "eyebrow": "Connect with us",
+    "title_lead": "Social",
+    "title_grad": "media hub"
+  },
+  "cta": {
+    "title": "Ready to Start Your Digital Journey?",
+    "subtitle": "Let's discuss your next project, training program, or internship opportunity.",
+    "buttons": [
+      { "label": "Contact Us Today", "href": "#form", "style": "glow" },
+      { "label": "Schedule a Free Consultation", "href": "#form", "style": "ghost" }
+    ]
+  }
+}

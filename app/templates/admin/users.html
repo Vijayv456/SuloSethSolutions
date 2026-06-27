@@ -1,0 +1,44 @@
+{% extends "admin/base_admin.html" %}
+{% block body %}
+{% if saved %}<div class="flash ok">Saved.</div>{% endif %}
+{% if error %}<div class="flash err">{{ error }}</div>{% endif %}
+
+<div class="glass panel">
+  <h3>Admin Users</h3>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Username</th><th>Name</th><th>Email</th><th>Role</th><th>Created</th><th></th></tr></thead>
+      <tbody>
+        {% for u in users %}
+        <tr>
+          <td><strong>{{ u.username }}</strong>{% if u.username == user.username %} <span class="pill-status s-new">you</span>{% endif %}</td>
+          <td>{{ u.name }}</td><td>{{ u.email }}</td><td>{{ u.role }}</td><td>{{ u.created_at }}</td>
+          <td>{% if u.username != user.username %}
+            <form method="post" action="/admin/users/delete" onsubmit="return confirm('Delete user {{ u.username }}?')"><input type="hidden" name="username" value="{{ u.username }}"><button class="btn btn-ghost btn-sm" style="color:#ff9a9a;border-color:rgba(255,133,133,.4)">Delete</button></form>
+          {% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="grid-2col" style="align-items:start">
+  <form method="post" action="/admin/users/add" class="glass panel admin-form" style="max-width:none">
+    <h3>Add User</h3>
+    <div class="field"><label>Username</label><input name="username" required /></div>
+    <div class="field"><label>Full Name</label><input name="name" /></div>
+    <div class="field"><label>Email</label><input name="email" type="email" /></div>
+    <div class="field"><label>Role</label><select name="role"><option>Admin</option><option>Super Admin</option><option>Editor</option></select></div>
+    <div class="field"><label>Password</label><input name="password" type="password" required /></div>
+    <button class="btn btn-glow" type="submit">Add User</button>
+  </form>
+
+  <form method="post" action="/admin/profile/password" class="glass panel admin-form" style="max-width:none">
+    <h3>Change My Password</h3>
+    <div class="field"><label>Current Password</label><input name="current" type="password" required /></div>
+    <div class="field"><label>New Password</label><input name="new_password" type="password" required /></div>
+    <button class="btn btn-glow" type="submit">Update Password</button>
+  </form>
+</div>
+{% endblock %}

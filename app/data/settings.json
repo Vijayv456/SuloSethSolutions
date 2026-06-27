@@ -1,0 +1,24 @@
+{
+  "company": {
+    "name": "SuloSethuSolution",
+    "address": "4th Floor, Tech Tower, Anna Salai, Chennai, Tamil Nadu 600002",
+    "phone": "+91 90000 12345",
+    "email": "hello@sulosethu.com",
+    "website": "www.sulosethu.com",
+    "working_hours": "Mon – Sat · 9:00 AM – 6:00 PM"
+  },
+  "social": {
+    "linkedin": "#",
+    "github": "#",
+    "facebook": "#",
+    "instagram": "#",
+    "youtube": "#"
+  },
+  "smtp": {
+    "host": "",
+    "port": "587",
+    "user": "",
+    "password": "",
+    "notify_email": "hello@sulosethu.com"
+  }
+}

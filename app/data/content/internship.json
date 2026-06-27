@@ -1,0 +1,133 @@
+{
+  "meta_title": "Internships — SuloSethuSolution",
+  "meta_description": "Start your career with real industry experience: live projects, mentorship, certification, and placement support.",
+  "hero": {
+    "pill_icon": "fa-solid fa-rocket",
+    "pill": "Career launch pad",
+    "title_lead": "Start Your Career With",
+    "title_grad": "Real Industry Experience",
+    "subtitle": "Work on live projects, learn directly from industry mentors, and walk away with a recognized certificate and placement support.",
+    "buttons": [
+      { "label": "Apply Now", "href": "#apply", "style": "glow" },
+      { "label": "Explore Programs", "href": "#programs", "style": "ghost" }
+    ],
+    "stats": [
+      { "value": 2000, "suffix": "+", "label": "Interns Trained" },
+      { "value": 8, "suffix": "", "label": "Tracks" },
+      { "value": 90, "suffix": "%", "label": "Conversion" }
+    ]
+  },
+  "code_tabs": {
+    "filename": "internship.py",
+    "tabs": [
+      {
+        "id": "learn",
+        "label": "Learn",
+        "icon": "fa-solid fa-book-open",
+        "code": [
+          "def learn(student):",
+          "    master_fundamentals(student)",
+          "    weekly_mentorship(student)",
+          "    return \"skilled\""
+        ],
+        "items": ["Structured Training", "1:1 Industry Mentorship", "Weekly Reviews", "Skill Assessment"]
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "icon": "fa-solid fa-diagram-project",
+        "code": [
+          "def build(student):",
+          "    assign_live_project(student)",
+          "    ship_to_production(student)",
+          "    return \"experienced\""
+        ],
+        "items": ["Real Client Projects", "GitHub Portfolio", "Team Collaboration", "Production Deployment"]
+      },
+      {
+        "id": "get_hired",
+        "label": "Get Hired",
+        "icon": "fa-solid fa-briefcase",
+        "code": [
+          "def get_hired(student):",
+          "    build_resume(student)",
+          "    mock_interviews(student)",
+          "    return \"placed\""
+        ],
+        "items": ["Internship Certificate", "Resume Building", "Mock Interviews", "Placement Support"]
+      }
+    ]
+  },
+  "programs": {
+    "eyebrow": "Internship programs",
+    "title_lead": "Choose your",
+    "title_grad": "career track",
+    "items": [
+      { "icon": "fa-solid fa-layer-group", "title": "Full Stack Development", "skills": ["HTML", "CSS", "JavaScript", "React", "Backend", "Database"] },
+      { "icon": "fa-brands fa-python", "title": "Python Development", "skills": ["Core Python", "Automation", "APIs", "Data Processing"] },
+      { "icon": "fa-brands fa-microsoft", "title": ".NET Development", "skills": ["C#", "ASP.NET", "SQL Server", "APIs"] },
+      { "icon": "fa-solid fa-robot", "title": "AI & Machine Learning", "skills": ["Machine Learning", "Deep Learning", "Chatbots", "Generative AI"] },
+      { "icon": "fa-solid fa-mobile-screen-button", "title": "Mobile App Development", "skills": ["Flutter", "React Native", "Android"] },
+      { "icon": "fa-solid fa-graduation-cap", "title": "Final Year Project", "skills": ["Project Development", "Documentation", "Deployment"] },
+      { "icon": "fa-solid fa-building", "title": "Corporate Internship", "skills": ["Professional Development", "Team Collaboration"] },
+      { "icon": "fa-solid fa-diagram-project", "title": "Live Project Internship", "skills": ["Client Projects", "Real Development Experience"] }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "Internship benefits",
+    "title_lead": "Why",
+    "title_grad": "join us",
+    "items": [
+      { "icon": "fa-solid fa-laptop-code", "title": "Live Projects", "desc": "Work on real-world applications." },
+      { "icon": "fa-solid fa-chalkboard-user", "title": "Industry Mentorship", "desc": "Learn directly from experienced professionals." },
+      { "icon": "fa-solid fa-chart-line", "title": "Weekly Reviews", "desc": "Track your progress every week." },
+      { "icon": "fa-solid fa-certificate", "title": "Internship Certificate", "desc": "Receive a recognized completion certificate." },
+      { "icon": "fa-solid fa-file-lines", "title": "Resume Building", "desc": "Create a professional, industry-ready resume." },
+      { "icon": "fa-solid fa-bullseye", "title": "Placement Support", "desc": "Guidance for interviews and job opportunities." }
+    ]
+  },
+  "orbit": {
+    "eyebrow": "Internship journey",
+    "title_lead": "Your Path to a",
+    "title_grad": "Successful Tech Career",
+    "lead": "Follow a structured journey from application to career readiness through hands-on training, mentorship, live projects, and placement support.",
+    "center": "SuloSethuSolution Internship Journey",
+    "center_sub": "Scroll to advance the orbit",
+    "background_image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=70",
+    "stages": [
+      { "icon": "fa-solid fa-paper-plane", "short": "Registration", "title": "Registration", "description": "Submit your application and choose your desired internship track.", "outcome": "Application successfully submitted.", "duration": "1 Day", "next": "Assessment" },
+      { "icon": "fa-solid fa-clipboard-check", "short": "Assessment", "title": "Skill Assessment", "description": "Complete a short skill assessment so we can tailor your learning path to your strengths.", "outcome": "Personalized learning plan created.", "duration": "2–3 Days", "next": "Training" },
+      { "icon": "fa-solid fa-book-open", "short": "Training", "title": "Training & Orientation", "description": "Build strong fundamentals through guided, hands-on training sessions with real tooling.", "outcome": "Core skills mastered.", "duration": "2–4 Weeks", "next": "Live Project" },
+      { "icon": "fa-solid fa-diagram-project", "short": "Live Project", "title": "Live Project", "description": "Apply your skills on a real client project with production code and agile workflows.", "outcome": "Shipped a real feature.", "duration": "3–4 Weeks", "next": "Mentorship" },
+      { "icon": "fa-solid fa-chalkboard-user", "short": "Mentorship", "title": "Mentorship & Reviews", "description": "Work closely with industry mentors through weekly code reviews and 1:1 guidance.", "outcome": "Real-world coding confidence.", "duration": "Ongoing", "next": "Certification" },
+      { "icon": "fa-solid fa-certificate", "short": "Certification", "title": "Certification", "description": "Earn a recognized internship completion certificate that validates your new skills.", "outcome": "Verified credential earned.", "duration": "1 Day", "next": "Placement" },
+      { "icon": "fa-solid fa-briefcase", "short": "Placement", "title": "Placement Support", "description": "Resume polishing, mock interviews, and referrals to our network of hiring partners.", "outcome": "Interview-ready & job offers.", "duration": "2–3 Weeks", "next": "Your career" }
+    ]
+  },
+  "faqs": {
+    "eyebrow": "Internship FAQs",
+    "title_lead": "Questions,",
+    "title_grad": "answered",
+    "items": [
+      { "icon": "fa-solid fa-hourglass-half", "q": "What is the duration?", "a": "We offer 1 month, 3 month, and 6 month internships." },
+      { "icon": "fa-solid fa-globe", "q": "Online or offline?", "a": "Both modes are available — choose what suits you." },
+      { "icon": "fa-solid fa-certificate", "q": "Do I get certification?", "a": "Yes, an internship completion certificate is provided." },
+      { "icon": "fa-solid fa-money-bill-wave", "q": "Is there a stipend?", "a": "Stipend depends on the internship type and project." },
+      { "icon": "fa-solid fa-user-graduate", "q": "Who is eligible?", "a": "Students, freshers, career switchers, and final-year students." }
+    ]
+  },
+  "apply": {
+    "eyebrow": "Apply now",
+    "title": "Internship application portal",
+    "highlights": ["Live Projects", "Industry Mentorship", "Internship Certificate", "Resume Building", "Placement Support"],
+    "stats": [
+      { "value": 2000, "suffix": "+", "label": "Students placed" },
+      { "value": 5000, "suffix": "+", "label": "Internships completed" }
+    ],
+    "program_options": [
+      "Full Stack Development", "Python Development", ".NET Development", "AI & Machine Learning",
+      "Mobile App Development", "Final Year Project", "Corporate Internship", "Live Project Internship"
+    ],
+    "duration_options": ["1 Month", "3 Months", "6 Months"]
+  }
+}

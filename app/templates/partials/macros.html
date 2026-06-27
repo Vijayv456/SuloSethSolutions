@@ -1,0 +1,72 @@
+{% macro section_head(s) %}
+<div class="section-head" data-reveal>
+  {% if s.eyebrow %}<span class="eyebrow">{{ s.eyebrow }}</span>{% endif %}
+  <h2 class="section-title">{{ s.title_lead }} <span class="grad-text">{{ s.title_grad }}</span></h2>
+  {% if s.lead %}<p class="section-lead">{{ s.lead }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro buttons(list) %}
+<div class="hero-cta reveal">
+  {% for b in list %}<a href="{{ b.href }}" class="btn {{ 'btn-glow' if b.style == 'glow' else 'btn-ghost' }}">{{ b.label }}</a>{% endfor %}
+</div>
+{% endmacro %}
+
+{% macro stars(n) %}<span class="stars">{% for _ in range(n) %}<i class="fa-solid fa-star"></i>{% endfor %}{% for _ in range(5 - n) %}<i class="fa-regular fa-star"></i>{% endfor %}</span>{% endmacro %}
+
+{% macro story_card(s) %}
+<article class="glass story-card">
+  <div class="story-top">
+    <div class="story-avatar">{{ s.name.split(' ') | map('first') | join('') }}</div>
+    <div><b>{{ s.name }}</b><small>{{ s.role }}</small></div>
+  </div>
+  <p>“{{ s.quote }}”</p>
+  <div class="story-meta">{{ stars(s.rating) }}<span>{{ s.program or s.course }}</span></div>
+</article>
+{% endmacro %}
+
+{% macro carousel(s, items) %}
+<div class="section-head" data-reveal>
+  <span class="eyebrow">{{ s.eyebrow }}</span>
+  <h2 class="section-title">{{ s.title_lead }} <span class="grad-text">{{ s.title_grad }}</span></h2>
+</div>
+<div class="stories" data-reveal data-carousel>
+  <div class="stories-head">
+    <h3>What our learners say</h3>
+    <div class="stories-nav"><button data-prev aria-label="Previous">‹</button><button data-next aria-label="Next">›</button></div>
+  </div>
+  <div class="stories-track">
+    {% for it in items %}{{ story_card(it) }}{% endfor %}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro cta_banner(c) %}
+<section class="section">
+  <div class="container">
+    <div class="glass cta-banner" data-reveal>
+      <h2>{{ c.title }}</h2>
+      <p>{{ c.subtitle }}</p>
+      <div class="cta-buttons">
+        {% for b in c.buttons %}<a href="{{ b.href }}" class="btn {{ 'btn-glow' if b.style == 'glow' else 'btn-ghost' }}">{{ b.label }}</a>{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endmacro %}
+
+{% macro accordion(s) %}
+<section class="section section-alt">
+  <div class="container">
+    {{ section_head(s) }}
+    <div class="accordion">
+      {% for f in s['items'] %}
+      <div class="glass acc-item" data-reveal>
+        <button class="acc-q" type="button"><span class="acc-ic"><i class="{{ f.icon }}"></i></span> {{ f.q }} <i class="chev fa-solid fa-chevron-down"></i></button>
+        <div class="acc-a"><div class="acc-a-inner">{{ f.a }}</div></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

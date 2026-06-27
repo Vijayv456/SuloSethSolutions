@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page_title }} · Admin · {{ site.brand.name }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="/static/css/styles.css?v=4" />
+  <link rel="stylesheet" href="/static/css/themes.css?v=3" />
+  <link rel="stylesheet" href="/static/css/admin.css?v=2" />
+  <script>(function(){try{if(localStorage.getItem('ss-mode')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+</head>
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="admin-side" id="adminSide">
+      <a class="brand" href="/admin/dashboard">
+        <span class="brand-mark">{{ site.brand.mark }}</span>
+        <span class="brand-name">{{ site.brand.name_prefix }}<span class="grad-text">{{ site.brand.name_suffix }}</span></span>
+      </a>
+      <nav class="admin-nav">
+        <a href="/admin/dashboard" class="{{ 'active' if active == 'dashboard' }}"><span class="ic"><i class="fa-solid fa-gauge-high"></i></span> Dashboard</a>
+        {% for key, meta in collections.items() %}
+        <a href="/admin/c/{{ key }}" class="{{ 'active' if active == key }}"><span class="ic"><i class="{{ meta.icon }}"></i></span> {{ meta.label }}{% if nav_counts.get(key) %}<span class="badge">{{ nav_counts[key] }}</span>{% endif %}</a>
+        {% endfor %}
+        <a href="/admin/content" class="{{ 'active' if active == 'content' }}"><span class="ic"><i class="fa-solid fa-pen-to-square"></i></span> Website Content</a>
+        <a href="/admin/settings" class="{{ 'active' if active == 'settings' }}"><span class="ic"><i class="fa-solid fa-gear"></i></span> Settings</a>
+        <a href="/admin/users" class="{{ 'active' if active == 'users' }}"><span class="ic"><i class="fa-solid fa-users"></i></span> Users</a>
+        <a href="/admin/reports" class="{{ 'active' if active == 'reports' }}"><span class="ic"><i class="fa-solid fa-chart-line"></i></span> Reports</a>
+      </nav>
+      <div class="side-foot">
+        <a href="/" target="_blank" style="color:var(--cyan)"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Website</a>
+        <div style="margin-top:.5rem"><a href="/admin/logout" style="color:var(--muted)"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-top">
+        <div style="display:flex;align-items:center;gap:.8rem">
+          <button class="menu-toggle" onclick="document.getElementById('adminSide').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
+          <h1>{{ page_title }}</h1>
+        </div>
+        <div class="admin-user">
+          <button type="button" class="mode-toggle" aria-label="Toggle dark/light mode"><i class="fa-solid fa-sun"></i></button>
+          <span>{{ user.name }} · {{ user.role }}</span>
+          <span class="av">{{ (user.name or 'A')[0] | upper }}</span>
+        </div>
+      </div>
+      {% block body %}{% endblock %}
+    </main>
+  </div>
+  <script>
+    (function () {
+      function apply(mode) {
+        if (mode === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        else document.documentElement.removeAttribute('data-theme');
+        try { localStorage.setItem('ss-mode', mode); } catch (e) {}
+        document.querySelectorAll('.mode-toggle').forEach(function (b) {
+          var dark = mode !== 'light';
+          b.innerHTML = '<i class="fa-solid ' + (dark ? 'fa-sun' : 'fa-moon') + '"></i>';
+        });
+      }
+      var m = 'dark'; try { m = localStorage.getItem('ss-mode') || 'dark'; } catch (e) {}
+      apply(m);
+      document.querySelectorAll('.mode-toggle').forEach(function (b) {
+        b.addEventListener('click', function () {
+          apply(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

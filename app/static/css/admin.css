@@ -1,0 +1,88 @@
+/* ===================================================================
+   SuloSethuSolution — Admin portal layout
+   Reuses design tokens from styles.css / themes.css.
+   =================================================================== */
+body.admin { background: var(--bg); }
+.admin-shell { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.admin-side { position: fixed; inset: 0 auto 0 0; width: 256px; padding: 1.4rem 1rem; background: var(--nav-bg); backdrop-filter: blur(16px); border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: .4rem; z-index: 50; overflow-y: auto; }
+.admin-side .brand { margin-bottom: 1.4rem; padding: 0 .4rem; }
+.admin-nav a { display: flex; align-items: center; gap: .7rem; padding: .65rem .8rem; border-radius: 12px; color: var(--muted); font-weight: 500; transition: background .2s, color .2s; }
+.admin-nav a:hover { background: var(--surface); color: var(--text); }
+.admin-nav a.active { background: var(--grad-soft); color: var(--text); border: 1px solid var(--border); }
+.admin-nav .ic { width: 22px; text-align: center; }
+.admin-nav .badge { margin-left: auto; background: var(--grad); color: #04101a; border-radius: 999px; font-size: .72rem; font-weight: 700; padding: .1rem .5rem; }
+.admin-side .side-foot { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); font-size: .82rem; color: var(--muted); }
+
+/* Main */
+.admin-main { margin-left: 256px; flex: 1; padding: 1.6rem 2rem 3rem; min-width: 0; }
+.admin-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.6rem; flex-wrap: wrap; gap: 1rem; }
+.admin-top h1 { font-size: 1.6rem; margin: 0; }
+.admin-user { display: flex; align-items: center; gap: .7rem; color: var(--muted); font-size: .9rem; }
+.admin-user .av { width: 38px; height: 38px; border-radius: 50%; background: var(--grad); color: #04101a; display: grid; place-items: center; font-weight: 700; }
+
+/* Cards / stats */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.1rem; margin-bottom: 1.8rem; }
+.stat-tile { padding: 1.3rem 1.4rem; }
+.stat-tile .lbl { color: var(--muted); font-size: .85rem; display: flex; align-items: center; gap: .5rem; }
+.stat-tile .num { font-family: 'Sora'; font-size: 2.2rem; font-weight: 800; margin-top: .4rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-tile a { color: var(--cyan); font-size: .82rem; }
+
+.panel { padding: 1.4rem 1.5rem; margin-bottom: 1.4rem; }
+.panel h3 { margin: 0 0 1rem; font-size: 1.1rem; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; }
+table.data { width: 100%; border-collapse: collapse; font-size: .92rem; }
+table.data th, table.data td { text-align: left; padding: .75rem .8rem; border-bottom: 1px solid var(--border); }
+table.data th { color: var(--muted); font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
+table.data tr:hover td { background: var(--surface); }
+table.data a.row-link { color: var(--text); font-weight: 600; }
+table.data a.row-link:hover { color: var(--cyan); }
+
+/* Status pills */
+.pill-status { padding: .25rem .7rem; border-radius: 999px; font-size: .76rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface-2); white-space: nowrap; }
+.pill-status.s-new, .pill-status.s-applied { color: #22d3ee; border-color: rgba(34,211,238,.4); }
+.pill-status.s-progress, .pill-status.s-review, .pill-status.s-contacted, .pill-status.s-read { color: #febc2e; border-color: rgba(254,188,46,.4); }
+.pill-status.s-done, .pill-status.s-closed, .pill-status.s-completed, .pill-status.s-enrolled, .pill-status.s-selected, .pill-status.s-replied { color: #28c840; border-color: rgba(40,200,64,.4); }
+.pill-status.s-rejected, .pill-status.s-archived { color: #ff8585; border-color: rgba(255,133,133,.4); }
+
+/* Filters / toolbar */
+.toolbar { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.2rem; }
+.toolbar input, .toolbar select { background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; color: var(--text); padding: .55rem .8rem; font-family: inherit; }
+.toolbar .spacer { flex: 1; }
+
+/* Detail */
+.kv { display: grid; grid-template-columns: 160px 1fr; gap: .6rem 1rem; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; word-break: break-word; }
+.note { padding: .7rem .9rem; border-left: 3px solid var(--cyan); background: var(--surface); border-radius: 8px; margin-bottom: .6rem; }
+.note small { color: var(--muted); display: block; margin-top: .3rem; }
+
+/* Forms */
+.admin-form { display: grid; gap: 1rem; max-width: 720px; }
+.admin-form .field label { font-size: .85rem; color: var(--muted); margin-bottom: .35rem; display: block; }
+.admin-form input, .admin-form select, .admin-form textarea { width: 100%; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; color: var(--text); padding: .65rem .8rem; font-family: inherit; }
+.admin-form textarea.code { font-family: 'Fira Code', monospace; font-size: .85rem; min-height: 460px; white-space: pre; }
+.flash { padding: .8rem 1rem; border-radius: 10px; margin-bottom: 1.2rem; }
+.flash.ok { background: rgba(40,200,64,.12); border: 1px solid rgba(40,200,64,.4); color: #7ee59a; }
+.flash.err { background: rgba(255,133,133,.12); border: 1px solid rgba(255,133,133,.4); color: #ffb3b3; }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 575px) { .grid-2col { grid-template-columns: 1fr; } .kv { grid-template-columns: 1fr; } }
+
+/* Login */
+.login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 2rem; position: relative; }
+.login-card { width: 100%; max-width: 400px; padding: 2.4rem 2rem; position: relative; z-index: 2; }
+.login-card .brand { justify-content: center; margin-bottom: 1.4rem; }
+.login-card h1 { text-align: center; font-size: 1.4rem; margin: 0 0 .3rem; }
+.login-card p.sub { text-align: center; color: var(--muted); font-size: .9rem; margin: 0 0 1.6rem; }
+.login-card .hint { text-align: center; color: var(--muted); font-size: .78rem; margin-top: 1rem; }
+
+@media (max-width: 900px) {
+  .admin-side { transform: translateX(-100%); transition: transform .3s; }
+  .admin-side.open { transform: none; }
+  .admin-main { margin-left: 0; }
+  .menu-toggle { display: inline-flex !important; }
+}
+.menu-toggle { display: none; background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: .5rem .7rem; cursor: pointer; }

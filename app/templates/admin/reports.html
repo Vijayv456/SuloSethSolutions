@@ -1,0 +1,20 @@
+{% extends "admin/base_admin.html" %}
+{% block body %}
+<div class="glass panel">
+  <h3>Export Reports</h3>
+  <p style="color:var(--muted)">Download any submission collection as CSV, Excel, or JSON.</p>
+</div>
+<div class="stat-grid">
+  {% for key, meta in collections.items() %}
+  <div class="glass stat-tile">
+    <div class="lbl"><span><i class="{{ meta.icon }}"></i></span> {{ meta.label }}</div>
+    <div class="num">{{ counts[key] }}</div>
+    <div style="display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap">
+      <a class="btn btn-ghost btn-sm" href="/admin/reports/{{ key }}.csv">CSV</a>
+      <a class="btn btn-ghost btn-sm" href="/admin/reports/{{ key }}.xlsx">Excel</a>
+      <a class="btn btn-ghost btn-sm" href="/admin/reports/{{ key }}.json">JSON</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

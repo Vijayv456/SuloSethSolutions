@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block head_extra %}<link rel="stylesheet" href="/static/css/training.css?v=5" />{% endblock %}
+{% block content %}
+
+<header class="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container hero-inner">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 hero-left">
+        <span class="pill reveal"><i class="{{ page.hero.pill_icon }}"></i> {{ page.hero.pill }}</span>
+        <h1 class="hero-title reveal">{{ page.hero.title_lead }} <span class="grad-text">{{ page.hero.title_grad }}</span></h1>
+        <p class="hero-sub reveal">{{ page.hero.subtitle }}</p>
+        {{ m.buttons(page.hero.buttons) }}
+        <div class="hero-trust reveal">{% for st in page.hero.stats %}<div><strong data-count="{{ st.value }}" data-suffix="{{ st.suffix }}">0</strong><span>{{ st.label }}</span></div>{% endfor %}</div>
+      </div>
+      <div class="col-lg-6 hero-right">
+        <div class="hero-visual" data-parallax>
+          {% include "partials/code_tabs.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRAMS (course doors opening scroll animation) -->
+{% set progs = page.programs['items'] %}
+<section id="programs" class="section sr-section">
+  <div class="container">{{ m.section_head(page.programs) }}</div>
+
+  <!-- interactive split-reveal stage -->
+  <div class="sr-wrap">
+    <div class="sr-stage" id="srStage">
+      <!-- back card = incoming service (revealed from center) -->
+      <div class="sr-card sr-back" id="srBack"></div>
+      <!-- front card = current service, split into two halves -->
+      <div class="sr-half left" id="srLeft"><div class="sr-face" id="srFaceL"></div></div>
+      <div class="sr-half right" id="srRight"><div class="sr-face" id="srFaceR"></div></div>
+    </div>
+    <div class="sr-dots" id="srDots">{% for p in progs %}<span class="{{ 'active' if loop.first }}"></span>{% endfor %}</div>
+    <p class="sr-hint">Scroll to reveal each track</p>
+  </div>
+
+  <!-- static fallback (mobile / reduced motion) -->
+  <div class="container sr-fallback">
+    <div class="grid grid-4">
+      {% for p in progs %}
+      <article class="glass prog-card"><div class="prog-icon"><i class="{{ p.icon }}"></i></div><h3>{{ p.title }}</h3><div class="chips">{% for s in p.skills %}<span>{{ s }}</span>{% endfor %}</div></article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script type="application/json" id="srData">{{ progs | tojson }}</script>
+</section>
+
+<!-- ROADMAP with tabs -->
+<section class="section section-alt">
+  <div class="container">
+    {{ m.section_head(page.roadmaps) }}
+    <div class="rm-tabs">
+      {% for tr in page.roadmaps.tracks %}<button class="rm-tab {{ 'active' if loop.first else '' }}" data-track="{{ tr.name }}">{{ tr.name }}</button>{% endfor %}
+    </div>
+    {% for tr in page.roadmaps.tracks %}
+    <div data-roadmap="{{ tr.name }}" {% if not loop.first %}hidden{% endif %}>
+      <div class="metro">
+        {% for st in tr.stages %}<div class="metro-stage"><span class="metro-dot"></span><span class="metro-label">{{ st }}</span></div>{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section">
+  <div class="container">
+    {{ m.section_head(page.benefits) }}
+    <div class="grid grid-3">
+      {% for b in page.benefits['items'] %}
+      <article class="glass why-card" data-reveal><span class="why-ic"><i class="{{ b.icon }}"></i></span><div><h4>{{ b.title }}</h4><p>{{ b.desc }}</p></div></article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section class="section section-alt">
+  <div class="container">
+    {{ m.section_head(page.trainers) }}
+    <div class="grid grid-4">
+      {% for t in page.trainers['items'] %}
+      <div class="flip" data-reveal>
+        <div class="flip-inner">
+          <div class="glass flip-face"><div class="flip-avatar"><i class="{{ t.icon }}"></i></div><h4>{{ t.name }}</h4><span class="exp">{{ t.experience }}</span></div>
+          <div class="glass flip-face flip-back"><h4>{{ t.name }}</h4><div class="chips" style="justify-content:center">{% for e in t.expertise %}<span>{{ e }}</span>{% endfor %}</div><p style="color:var(--muted);margin:.6rem 0 0">Teaches: {{ t.courses }}</p></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section">
+  <div class="container">{{ m.carousel(page.reviews, page.reviews['items']) }}</div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section section-alt section-stats">
+  <div class="container">
+    {{ m.section_head(page.outcomes) }}
+    <div class="grid grid-4">
+      {% for st in page.outcomes.stats %}
+      <div class="glass stat" data-reveal><strong data-count="{{ st.value }}" data-suffix="{{ st.suffix }}">0</strong><span>{{ st.label }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ENROLL -->
+<section id="enroll" class="section">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5" data-reveal>
+        <span class="eyebrow">{{ page.enroll.eyebrow }}</span>
+        <h2 class="section-title">{{ page.enroll.title }}</h2>
+        <ul class="check-list">{% for h in page.enroll.highlights %}<li>{{ h }}</li>{% endfor %}</ul>
+        <div class="hero-trust">{% for st in page.enroll.stats %}<div><strong data-count="{{ st.value }}" data-suffix="{{ st.suffix }}">0</strong><span>{{ st.label }}</span></div>{% endfor %}</div>
+      </div>
+      <div class="col-lg-7" data-reveal>
+        <form class="glass glass-form" action="/submit/training" method="post" data-ajax novalidate>
+          <div class="form-grid">
+            <div class="field"><label>Full Name</label><input name="name" required placeholder="Your name" /></div>
+            <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com" /></div>
+            <div class="field"><label>Mobile Number</label><input name="phone" type="tel" placeholder="+91 ..." /></div>
+            <div class="field"><label>Course Interested In</label><select name="course"><option value="" disabled selected>Choose…</option>{% for c in page.enroll.course_options %}<option>{{ c }}</option>{% endfor %}</select></div>
+            <div class="field"><label>Experience Level</label><select name="experience_level"><option value="" disabled selected>Select…</option>{% for e in page.enroll.experience_options %}<option>{{ e }}</option>{% endfor %}</select></div>
+            <div class="field"><label>Preferred Mode</label><select name="mode"><option value="" disabled selected>Select…</option>{% for mo in page.enroll.mode_options %}<option>{{ mo }}</option>{% endfor %}</select></div>
+            <div class="field full"><label>Message</label><textarea name="message" rows="3" placeholder="Tell us your goals…"></textarea></div>
+            <div class="field full"><button type="submit" class="btn btn-glow w-100">Enroll Now</button><p class="form-note" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/training.js?v=4"></script>{% endblock %}

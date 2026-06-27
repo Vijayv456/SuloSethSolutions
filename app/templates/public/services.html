@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block head_extra %}<link rel="stylesheet" href="/static/css/growth2.css?v=1" />{% endblock %}
+{% block content %}
+
+<header class="hero hero-short">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container hero-inner">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 hero-left">
+        <span class="pill reveal"><i class="{{ page.hero.pill_icon }}"></i> {{ page.hero.pill }}</span>
+        <h1 class="hero-title reveal">{{ page.hero.title_lead }} <span class="grad-text">{{ page.hero.title_grad }}</span></h1>
+        <p class="hero-sub reveal">{{ page.hero.subtitle }}</p>
+        {{ m.buttons(page.hero.buttons) }}
+      </div>
+      <div class="col-lg-6 hero-right">
+        <div class="hero-visual" data-parallax>
+          {% include "partials/code_tabs.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICE DETAILS (scroll-driven progress storytelling) -->
+{% set g2 = page.growth %}
+<section class="section g2-section" id="services">
+  <div class="container">
+    {{ m.section_head(g2) }}
+    <div class="g2-layout">
+      <!-- Left: sticky progress navigator (full list) -->
+      <nav class="g2-nav" aria-label="Services progress">
+        <div class="g2-line"><span class="g2-line-fill" id="g2Fill"></span></div>
+        <ul class="g2-list" id="g2List">
+          {% for s in g2.services %}
+          <li class="g2-item" data-index="{{ loop.index0 }}" tabindex="0">
+            <span class="g2-badge">
+              <span class="g2-num">{{ '%02d'|format(loop.index) }}</span>
+              <i class="fa-solid fa-check g2-check" aria-hidden="true"></i>
+            </span>
+            <span class="g2-label">{{ s.title }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <!-- Right: dynamic content panel -->
+      <div class="glass g2-panel" id="g2Panel">
+        <div class="g2-info">
+          <span class="g2-step" id="g2Step">01 / {{ '%02d'|format(g2.services|length) }}</span>
+          <h3 id="g2Title">{{ g2.services[0].title }}</h3>
+          <p class="g2-desc" id="g2Desc">{{ g2.services[0].desc }}</p>
+          <ul class="g2-feats" id="g2Feats">
+            {% for f in g2.services[0].features %}<li><i class="fa-solid fa-circle-check"></i> {{ f }}</li>{% endfor %}
+          </ul>
+        </div>
+        <div class="g2-visual" id="g2Visual"></div>
+      </div>
+    </div>
+  </div>
+  <script type="application/json" id="g2Data">{{ g2.services | tojson }}</script>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section section-alt">
+  <div class="container">
+    {{ m.section_head(page.industries) }}
+    <div class="grid grid-4">
+      {% for i in page.industries['items'] %}
+      <article class="glass icon-card" data-reveal><span class="ic"><i class="{{ i.icon }}"></i></span><span class="nm">{{ i.name }}</span></article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPMENT PROCESS (sticky card stack) -->
+<section class="section process-section">
+  <div class="container">{{ m.section_head(page.process) }}</div>
+  <div class="stack" id="processStack">
+    {% for step in page.process.steps %}
+    <article class="glass stack-card" style="--i: {{ loop.index0 }}">
+      <div class="sc-body">
+        <div class="sc-left">
+          <span class="sc-phase">Phase {{ '%02d'|format(loop.index) }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.desc }}</p>
+          <ul class="sc-acts">{% for a in step.activities %}<li><i class="fa-solid fa-circle-check"></i> {{ a }}</li>{% endfor %}</ul>
+        </div>
+        <div class="sc-right">
+          <div class="sc-orb">
+            <span class="sc-ring"></span><span class="sc-ring r2"></span>
+            <i class="{{ step.icon }}"></i>
+          </div>
+          <span class="sc-step-no">{{ '%02d'|format(loop.index) }}<small>/{{ '%02d'|format(page.process.steps|length) }}</small></span>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- REQUEST A QUOTE -->
+<section id="quote" class="section section-alt">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5" data-reveal>
+        <span class="eyebrow">{{ page.quote.eyebrow }}</span>
+        <h2 class="section-title">{{ page.quote.title }}</h2>
+        <ul class="check-list">{% for b in page.quote.benefits %}<li>{{ b }}</li>{% endfor %}</ul>
+      </div>
+      <div class="col-lg-7" data-reveal>
+        <form class="glass glass-form" action="/submit/service" method="post" data-ajax novalidate>
+          <div class="form-grid">
+            <div class="field"><label>Name</label><input name="name" required placeholder="Your name" /></div>
+            <div class="field"><label>Company Name</label><input name="company" placeholder="Company" /></div>
+            <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com" /></div>
+            <div class="field"><label>Phone</label><input name="phone" type="tel" placeholder="+91 ..." /></div>
+            <div class="field"><label>Service Required</label><select name="service"><option value="" disabled selected>Choose…</option>{% for s in page.quote.service_options %}<option>{{ s }}</option>{% endfor %}</select></div>
+            <div class="field"><label>Budget Range</label><select name="budget"><option value="" disabled selected>Select…</option>{% for b in page.quote.budget_options %}<option>{{ b }}</option>{% endfor %}</select></div>
+            <div class="field full"><label>Project Description</label><textarea name="message" rows="4" placeholder="Tell us about your project…"></textarea></div>
+            <div class="field full"><button type="submit" class="btn btn-glow w-100">Get Free Quote</button><p class="form-note" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/growth2.js?v=2"></script><script src="/static/js/stack.js?v=4"></script>{% endblock %}

@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block head_extra %}<link rel="stylesheet" href="/static/css/growth.css?v=1" />{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<header class="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container hero-inner">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 hero-left">
+        <span class="pill reveal"><i class="{{ page.hero.pill_icon }}"></i> {{ page.hero.pill }}</span>
+        <h1 class="hero-title reveal">{{ page.hero.title_lead }} <span class="grad-text">{{ page.hero.title_grad }}</span></h1>
+        <p class="hero-sub reveal">{{ page.hero.subtitle }}</p>
+        {{ m.buttons(page.hero.buttons) }}
+        <div class="hero-trust reveal">
+          {% for st in page.hero.stats %}
+          <div><strong data-count="{{ st.value }}" data-suffix="{{ st.suffix }}">0</strong><span>{{ st.label }}</span></div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-6 hero-right">
+        <div class="hero-visual" data-parallax>
+          {% include "partials/code_tabs.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#services" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+</header>
+
+<!-- SERVICES (scroll-driven growth navigator) -->
+{% set svc = page.services['items'] %}
+<section id="services" class="section sg-section">
+  <div class="container">
+    {{ m.section_head(page.services) }}
+    <div class="sg-layout">
+      <div class="sg-nav" aria-hidden="false">
+        <div class="sg-line"><span class="sg-line-fill"></span></div>
+        <div class="sg-track" id="sgTrack" role="tablist">
+          {% for s in svc %}
+          <button type="button" class="sg-node" data-index="{{ loop.index0 }}" style="--rel: {{ loop.index0 }}" aria-label="{{ s.title }}">
+            <span class="sg-node-ic"><i class="{{ s.icon }}"></i></span>
+            <span class="sg-node-t">{{ s.title }}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="glass sg-panel" id="sgPanel">
+        <div class="sg-num"><b id="sgNum">01</b> &nbsp;/&nbsp; {{ '%02d'|format(svc|length) }}</div>
+        <div class="sg-ic" id="sgIc"><i class="{{ svc[0].icon }}"></i></div>
+        <h3 id="sgTitle">{{ svc[0].title }}</h3>
+        <p class="sg-desc" id="sgDesc">{{ svc[0].desc }}</p>
+        <ul class="sg-feats" id="sgFeatures">
+          {% for f in svc[0].features %}<li><i class="fa-solid fa-circle-check"></i> {{ f }}</li>{% endfor %}
+        </ul>
+        <a href="{{ page.services.cta.href }}" class="btn btn-glow sg-cta">{{ page.services.cta.label }}</a>
+      </div>
+    </div>
+  </div>
+  <script type="application/json" id="sgData">{{ svc | tojson }}</script>
+</section>
+
+<!-- INTERNSHIP JOURNEY -->
+<section id="internship" class="section section-alt">
+  <div class="container">
+    {{ m.section_head(page.internship) }}
+    <div class="flow-wrap">
+      <canvas id="flow-canvas" aria-hidden="true"></canvas>
+      <div class="flow-steps">
+        {% for step in page.internship.steps %}
+        <div class="glass flow-step" data-reveal><div class="flow-num"><i class="{{ step.icon }}"></i></div><h4>{{ step.title }}</h4><p>{{ step.desc }}</p></div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="text-center mt-4" data-reveal><a href="{{ page.internship.cta.href }}" class="btn btn-glow">{{ page.internship.cta.label }}</a></div>
+  </div>
+</section>
+
+<!-- TRAINING ROADMAP -->
+<section id="training" class="section">
+  <div class="container">
+    {{ m.section_head(page.training) }}
+    <p class="text-center section-lead" data-reveal style="margin-top:-2rem">Example track · <strong class="grad-text">{{ page.training.course }}</strong></p>
+    <div class="timeline">
+      <div class="timeline-line"><span class="timeline-progress"></span></div>
+      {% for lvl in page.training.levels %}
+      <div class="tl-item" data-reveal>
+        <span class="tl-node"></span>
+        <div class="glass tl-card">
+          <span class="tl-level">{{ lvl.level }}</span>
+          <h3>{{ lvl.title }}</h3>
+          <div class="tl-tags">{% for t in lvl.tags %}<span>{{ t }}</span>{% endfor %}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4" data-reveal><a href="{{ page.training.cta.href }}" class="btn btn-glow">{{ page.training.cta.label }}</a></div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why" class="section section-alt">
+  <div class="container">
+    {{ m.section_head(page.why) }}
+    <div class="grid grid-3">
+      {% for w in page.why['items'] %}
+      <article class="glass why-card" data-reveal><span class="why-ic"><i class="{{ w.icon }}"></i></span><div><h4>{{ w.title }}</h4><p>{{ w.desc }}</p></div></article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="section">
+  <div class="container">{{ m.carousel(page.stories, page.stories['items']) }}</div>
+</section>
+
+<!-- TECHNOLOGIES (circular rotating ring) -->
+<section id="tech" class="section section-alt tech-section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ page.tech.eyebrow }}</span>
+      <h2 class="section-title">{{ page.tech.title_lead }} <span class="grad-text">{{ page.tech.title_grad }}</span></h2>
+      <p class="section-lead">{{ page.tech.lead }}</p>
+    </div>
+    <div class="tech-ring" id="techRing" style="--count: {{ page.tech.ring|length }}" data-reveal>
+      <div class="tech-rotor" id="techRotor">
+        {% for t in page.tech.ring %}
+        <div class="tech-card" style="--i: {{ loop.index0 }}; --bc: {{ t.color }}">
+          <div class="tech-card-inner glass">
+            <i class="{{ t.icon }}"></i>
+            <span>{{ t.name }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="tech-core glass">
+        <i class="fa-solid fa-microchip"></i>
+        <strong>Full-Stack<br>Mastery</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="row g-5 align-items-stretch">
+      <div class="col-lg-5" data-reveal>
+        <span class="eyebrow">{{ page.contact.eyebrow }}</span>
+        <h2 class="section-title">{{ page.contact.title_lead }} <span class="grad-text">{{ page.contact.title_grad }}</span></h2>
+        <p class="section-lead">{{ page.contact.lead }}</p>
+        {% set company = settings.company if settings and settings.company else site.company %}
+        <ul class="contact-list">
+          <li><span class="ci"><i class="fa-solid fa-location-dot"></i></span> {{ company.address }}</li>
+          <li><span class="ci"><i class="fa-solid fa-envelope"></i></span> {{ company.email }}</li>
+          <li><span class="ci"><i class="fa-solid fa-phone"></i></span> {{ company.phone }}</li>
+        </ul>
+      </div>
+      <div class="col-lg-7" data-reveal>
+        <form class="glass glass-form" action="/submit/service" method="post" data-ajax novalidate>
+          <div class="form-grid">
+            <div class="field"><label>Name</label><input name="name" type="text" required placeholder="Your name" /></div>
+            <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com" /></div>
+            <div class="field"><label>Phone</label><input name="phone" type="tel" placeholder="+91 ..." /></div>
+            <div class="field"><label>Service Interested In</label>
+              <select name="service"><option value="" disabled selected>Choose a service</option>{% for s in page.contact.services %}<option>{{ s }}</option>{% endfor %}</select>
+            </div>
+            <div class="field full"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us what you're looking for…"></textarea></div>
+            <div class="field full"><button type="submit" class="btn btn-glow w-100">Send Message</button><p class="form-note" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/growth.js?v=2"></script>{% endblock %}

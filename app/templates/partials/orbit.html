@@ -1,0 +1,68 @@
+{# Circular Career Orbit — scroll-driven internship journey. Expects `o` = orbit data. #}
+{% set o = page.orbit %}
+<section class="section orbit-section" id="journey" style="--orbit-img: url('{{ o.background_image }}')">
+  <div class="orbit-bg" aria-hidden="true"></div>
+  <div class="orbit-rays" aria-hidden="true"></div>
+  <div class="orbit-particles" id="orbitParticles" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ o.eyebrow }}</span>
+      <h2 class="section-title">{{ o.title_lead }} <span class="grad-text">{{ o.title_grad }}</span></h2>
+      <p class="section-lead">{{ o.lead }}</p>
+    </div>
+
+    <div class="orbit-layout">
+      <!-- ORBIT -->
+      <div class="orbit-stage" id="orbitStage" data-reveal>
+        <svg class="orbit-svg" viewBox="0 0 600 600" aria-hidden="true">
+          <defs>
+            <linearGradient id="orbitGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="var(--cyan)"/><stop offset="50%" stop-color="var(--blue)"/><stop offset="100%" stop-color="var(--purple)"/>
+            </linearGradient>
+          </defs>
+          <circle class="orbit-track" cx="300" cy="300" r="220"/>
+          <circle class="orbit-progress" id="orbitProgress" cx="300" cy="300" r="220"/>
+        </svg>
+
+        <div class="orbit-rotor" id="orbitRotor">
+          {% for s in o.stages %}
+          <button type="button" class="orbit-node" data-index="{{ loop.index0 }}" aria-label="{{ s.title }}">
+            <span class="node-inner">
+              <span class="node-card">
+                <span class="node-ic"><i class="{{ s.icon }}"></i></span>
+                <span class="node-lbl">{{ s.short }}</span>
+                <span class="node-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+              </span>
+            </span>
+          </button>
+          {% endfor %}
+        </div>
+
+        <div class="orbit-core glass" id="orbitCore">
+          <span class="core-ic" id="coreIc"><i class="{{ o.stages[0].icon }}"></i></span>
+          <strong id="coreTitle">{{ o.stages[0].short }}</strong>
+          <small id="coreStep">Stage 1 of {{ o.stages|length }}</small>
+        </div>
+      </div>
+
+      <!-- DYNAMIC PANEL -->
+      <aside class="orbit-panel glass" id="orbitPanel" data-reveal>
+        <div class="op-progress"><span id="opBar"></span></div>
+        <div class="op-step" id="opStep">Stage 1 of {{ o.stages|length }}</div>
+        <div class="op-head">
+          <span class="op-icon" id="opIcon"><i class="{{ o.stages[0].icon }}"></i></span>
+          <h3 id="opTitle">{{ o.stages[0].title }}</h3>
+        </div>
+        <p class="op-desc" id="opDesc">{{ o.stages[0].description }}</p>
+        <dl class="op-meta">
+          <div><dt>Expected Outcome</dt><dd id="opOutcome">{{ o.stages[0].outcome }}</dd></div>
+          <div><dt>Duration</dt><dd id="opDuration">{{ o.stages[0].duration }}</dd></div>
+          <div><dt>Next Step</dt><dd id="opNext"><span class="op-next-pill">{{ o.stages[0].next }}</span></dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+
+  <script type="application/json" id="orbitData">{{ o.stages | tojson }}</script>
+</section>

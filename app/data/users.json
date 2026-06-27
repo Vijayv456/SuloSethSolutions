@@ -1,0 +1,10 @@
+[
+  {
+    "username": "admin",
+    "name": "Administrator",
+    "email": "admin@sulosethu.com",
+    "role": "Super Admin",
+    "password": "pbkdf2_sha256$120000$1454c90fd967b1a6272ec14a34c4ab1d$ee269963a3a13b60dba6de851405755fc8cf082d07e58cd74870d199a8b673ae",
+    "created_at": "2026-06-23 11:50:13"
+  }
+]

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% set company = settings.company if settings and settings.company else site.company %}
+{% set social = settings.social if settings and settings.social else {} %}
+{% block content %}
+
+<header class="hero hero-short">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container hero-inner">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 hero-left">
+        <span class="pill reveal"><i class="{{ page.hero.pill_icon }}"></i> {{ page.hero.pill }}</span>
+        <h1 class="hero-title reveal">{{ page.hero.title_lead }} <span class="grad-text">{{ page.hero.title_grad }}</span></h1>
+        <p class="hero-sub reveal">{{ page.hero.subtitle }}</p>
+        {{ m.buttons(page.hero.buttons) }}
+      </div>
+      <div class="col-lg-5 hero-right">
+        <div class="hero-visual" data-parallax style="min-height:300px">
+          <div class="glass code-window float-a" style="width:100%">
+            <div class="code-top"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="code-title">chat.live</span></div>
+            <div class="code-body" style="font-family:inherit"><p style="margin:.2rem 0;color:var(--muted)"><i class="fa-solid fa-comment-dots"></i> Hi! How can we help?</p><p style="margin:.6rem 0;text-align:right"><span class="pill" style="margin:0">Tell me about training</span></p><p style="margin:.2rem 0;color:var(--cyan)">Typing…</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- INFO CARDS -->
+<section id="info" class="section">
+  <div class="container">
+    {{ m.section_head(page.info_cards) }}
+    <div class="grid grid-4">
+      <article class="glass cinfo-card" data-reveal><span class="ic"><i class="fa-solid fa-location-dot"></i></span><h4>Visit Us</h4><p>{{ company.address }}</p></article>
+      <article class="glass cinfo-card" data-reveal><span class="ic"><i class="fa-solid fa-phone"></i></span><h4>Call Us</h4><p><a href="tel:{{ company.phone }}">{{ company.phone }}</a></p>{% if site.company.phone_secondary %}<p><a href="tel:{{ site.company.phone_secondary }}">{{ site.company.phone_secondary }}</a></p>{% endif %}</article>
+      <article class="glass cinfo-card" data-reveal><span class="ic"><i class="fa-solid fa-envelope"></i></span><h4>Email Us</h4><p><a href="mailto:{{ company.email }}">{{ company.email }}</a></p>{% if site.company.email_secondary %}<p><a href="mailto:{{ site.company.email_secondary }}">{{ site.company.email_secondary }}</a></p>{% endif %}</article>
+      <article class="glass cinfo-card" data-reveal><span class="ic"><i class="fa-solid fa-globe"></i></span><h4>Website</h4><p><a href="#">{{ company.website }}</a></p><p>{{ company.working_hours }}</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="form" class="section section-alt">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5" data-reveal>
+        <span class="eyebrow">{{ page.form.eyebrow }}</span>
+        <h2 class="section-title">{{ page.form.title_lead }} <span class="grad-text">{{ page.form.title_grad }}</span></h2>
+        <ul class="check-list">{% for h in page.form.highlights %}<li>{{ h }}</li>{% endfor %}</ul>
+      </div>
+      <div class="col-lg-7" data-reveal>
+        <form class="glass glass-form" action="/submit/contact" method="post" data-ajax novalidate>
+          <div class="form-grid">
+            <div class="field"><label>Name</label><input name="name" required placeholder="Your name" /></div>
+            <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com" /></div>
+            <div class="field"><label>Phone</label><input name="phone" type="tel" placeholder="+91 ..." /></div>
+            <div class="field"><label>Inquiry Type</label><select name="inquiry_type"><option value="" disabled selected>Choose…</option>{% for t in page.form.inquiry_types %}<option>{{ t }}</option>{% endfor %}</select></div>
+            <div class="field full"><label>Subject</label><input name="subject" placeholder="Subject" /></div>
+            <div class="field full"><label>Message</label><textarea name="message" rows="4" placeholder="How can we help?"></textarea></div>
+            <div class="field full"><button type="submit" class="btn btn-glow w-100">Send Message</button><p class="form-note" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section">
+  <div class="container">
+    <div class="glass map" data-reveal>
+      <iframe title="{{ page.map.title }}" src="{{ page.map.embed }}" loading="lazy"></iframe>
+      <div class="glass map-overlay">
+        <h4>{{ site.brand.name }}</h4>
+        <p>{{ company.address }}</p>
+        <p><strong>Hours:</strong> {{ company.working_hours }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ m.accordion(page.faqs) }}
+
+<!-- SOCIAL HUB -->
+<section class="section">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow">{{ page.social_hub.eyebrow }}</span><h2 class="section-title">{{ page.social_hub.title_lead }} <span class="grad-text">{{ page.social_hub.title_grad }}</span></h2></div>
+    <div class="socials justify-content-center" style="justify-content:center">
+      {% for s in site.social %}<a href="{{ social.get(s.label|lower, s.href) if social else s.href }}" target="_blank" rel="noopener" aria-label="{{ s.label }}">{{ s.abbr }}</a>{% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ m.cta_banner(page.cta) }}
+{% endblock %}

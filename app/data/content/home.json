@@ -1,0 +1,189 @@
+{
+  "meta_title": "SuloSethuSolution — Software Development, Training & Internships",
+  "meta_description": "Software development, professional IT training, and industry-focused internship programs to help businesses grow and students build careers.",
+  "hero": {
+    "pill_icon": "fa-solid fa-rocket",
+    "pill": "Software · Training · Internships",
+    "title_lead": "Transform Your Ideas Into",
+    "title_grad": "Powerful Digital Solutions",
+    "subtitle": "We provide Software Development, Professional IT Training, and Industry-Focused Internship Programs to help businesses grow and students build successful careers.",
+    "buttons": [
+      { "label": "Get Started", "href": "/contact", "style": "glow" },
+      { "label": "Explore Services", "href": "/services", "style": "ghost" },
+      { "label": "Apply for Internship", "href": "/internship", "style": "ghost" },
+      { "label": "Join Training", "href": "/training", "style": "ghost" }
+    ],
+    "stats": [
+      { "value": 5, "suffix": "+", "label": "Projects" },
+      { "value": 100, "suffix": "+", "label": "Students" },
+      { "value": 95, "suffix": "%", "label": "Placement" }
+    ],
+    "code": {
+      "filename": "build.py",
+      "lines": [
+        "def build_solution(client):",
+        "    return {",
+        "        \"development\": True,",
+        "        \"training\": True,",
+        "        \"internship\": True,",
+        "    }",
+        "",
+        "result = build_solution(\"SuloSethuSolution\")"
+      ]
+    }
+  },
+  "code_tabs": {
+    "filename": "build.py",
+    "tabs": [
+      {
+        "id": "services",
+        "label": "Services",
+        "icon": "fa-solid fa-laptop-code",
+        "code": [
+          "def build_solution(client):",
+          "    return {",
+          "        \"development\": True,",
+          "        \"training\": True,",
+          "        \"internship\": True,",
+          "    }",
+          "",
+          "result = build_solution(\"SuloSethuSolution\")"
+        ],
+        "items": ["Web & Mobile Apps", "API Development & Integration", "Automation & Data", "CRM, ERP & E-Commerce"]
+      },
+      {
+        "id": "internship",
+        "label": "Internship",
+        "icon": "fa-solid fa-rocket",
+        "code": [
+          "def launch_career(student):",
+          "    train(student)",
+          "    assign_live_project(student)",
+          "    return \"industry_ready\""
+        ],
+        "items": ["Real Live Projects", "Industry Mentorship", "Internship Certificate", "Placement Support"]
+      },
+      {
+        "id": "training",
+        "label": "Training",
+        "icon": "fa-solid fa-graduation-cap",
+        "code": [
+          "def upskill(learner):",
+          "    learn_by_building(learner)",
+          "    get_certified(learner)",
+          "    return \"job_ready\""
+        ],
+        "items": ["Live Instructor Sessions", "Hands-on Projects", "Industry Certification", "Placement Assistance"]
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title_lead": "Services built for",
+    "title_grad": "growth",
+    "lead": "From idea to launch — and the talent to power it.",
+    "items": [
+      { "icon": "fa-solid fa-globe", "title": "Web Application Development", "desc": "Custom portals, dashboards, and SaaS products with clean, maintainable code.", "features": ["Custom Portals", "Admin Dashboards", "SaaS Applications", "Progressive Web Apps"] },
+      { "icon": "fa-solid fa-mobile-screen-button", "title": "Mobile App Development", "desc": "Native-feel Android & iOS apps from a single cross-platform codebase.", "features": ["Android Apps", "iOS Apps", "Cross-Platform (Flutter / RN)", "App Store Deployment"] },
+      { "icon": "fa-solid fa-plug", "title": "API Development & Integration", "desc": "REST APIs, third-party integrations, and secure payment gateways.", "features": ["REST & GraphQL APIs", "Third-Party Integrations", "Payment Gateways", "Webhooks & Auth"] },
+      { "icon": "fa-solid fa-gears", "title": "Business Process Automation", "desc": "Workflow and report automation that cuts cost and manual effort.", "features": ["Workflow Automation", "Report Automation", "Process Optimization", "Scheduled Jobs"] },
+      { "icon": "fa-solid fa-table-cells", "title": "Data Scraping & Processing", "desc": "Reliable data collection, cleaning, and transformation pipelines.", "features": ["Data Collection", "Data Cleaning", "Data Transformation", "ETL Pipelines"] },
+      { "icon": "fa-solid fa-building", "title": "CRM & ERP Solutions", "desc": "Customer, inventory, and HR management tailored to your operations.", "features": ["Customer Management", "Inventory Management", "HR Management", "Custom Modules"] },
+      { "icon": "fa-solid fa-shield-halved", "title": "Software Maintenance & Support", "desc": "Bug fixes, enhancements, and proactive monitoring that keep you running.", "features": ["Bug Fixes", "Feature Enhancements", "Uptime Monitoring", "Security Patches"] },
+      { "icon": "fa-solid fa-cart-shopping", "title": "E-Commerce Development", "desc": "Online stores with payment integration and order management.", "features": ["Online Stores", "Payment Integration", "Order Management", "Inventory Sync"] }
+    ],
+    "cta": { "label": "View All Services", "href": "/services" }
+  },
+  "internship": {
+    "eyebrow": "Internship journey",
+    "title_lead": "From registration to",
+    "title_grad": "placement",
+    "lead": "A guided, project-driven path into your career.",
+    "steps": [
+      { "icon": "fa-solid fa-paper-plane", "title": "Apply Online", "desc": "Sign up and pick your track." },
+      { "icon": "fa-solid fa-clipboard-check", "title": "Skill Assessment", "desc": "Skill check & personalized plan." },
+      { "icon": "fa-solid fa-book-open", "title": "Training & Orientation", "desc": "Guided, hands-on learning." },
+      { "icon": "fa-solid fa-diagram-project", "title": "Live Project Assignment", "desc": "Ship real production work." },
+      { "icon": "fa-solid fa-chalkboard-user", "title": "Mentorship & Reviews", "desc": "1:1 guidance and weekly reviews." },
+      { "icon": "fa-solid fa-flag-checkered", "title": "Internship Completion", "desc": "Wrap up and present your work." },
+      { "icon": "fa-solid fa-certificate", "title": "Certificate & Career Guidance", "desc": "Credential + interview support." }
+    ],
+    "cta": { "label": "Apply Now", "href": "/internship" }
+  },
+  "training": {
+    "eyebrow": "Training roadmap",
+    "title_lead": "A path from",
+    "title_grad": "beginner to pro",
+    "lead": "Structured tracks with mentorship at every level.",
+    "course": "Full Stack Development",
+    "levels": [
+      { "level": "Beginner", "title": "Foundations", "tags": ["HTML, CSS, JavaScript", "Bootstrap & Responsive Design"] },
+      { "level": "Intermediate", "title": "Building Real Apps", "tags": ["Backend Development", "Database Management"] },
+      { "level": "Pro", "title": "Professional Full Stack Developer", "tags": ["API Development", "Project Development", "Deployment"] }
+    ],
+    "cta": { "label": "View Courses", "href": "/training" }
+  },
+  "why": {
+    "eyebrow": "Why choose us",
+    "title_lead": "Built on",
+    "title_grad": "outcomes",
+    "lead": "Not promises — measurable results for businesses and students.",
+    "items": [
+      { "icon": "fa-solid fa-user-graduate", "title": "Industry Experts", "desc": "Learn from experienced professionals who ship daily." },
+      { "icon": "fa-solid fa-screwdriver-wrench", "title": "Live Projects", "desc": "Hands-on, portfolio-ready practical experience." },
+      { "icon": "fa-solid fa-bullseye", "title": "Career Guidance", "desc": "Interview preparation and 1:1 mentorship." },
+      { "icon": "fa-solid fa-handshake", "title": "Placement Support", "desc": "Job assistance and hiring-partner referrals." },
+      { "icon": "fa-solid fa-bolt", "title": "Industry-Relevant Curriculum", "desc": "Updated technologies, tools, and best practices." },
+      { "icon": "fa-solid fa-wallet", "title": "Affordable Learning", "desc": "High-quality training at competitive pricing." }
+    ]
+  },
+  "stories": {
+    "eyebrow": "Success stories",
+    "title_lead": "Student",
+    "title_grad": "success stories",
+    "items": [
+      { "name": "Aarav Sharma", "program": "Full Stack Development", "role": "SDE @ CloudByte", "quote": "The live projects made my resume stand out. I landed a role within 6 weeks of finishing.", "rating": 5 },
+      { "name": "Priya Menon", "program": "React Training", "role": "Frontend Dev @ Finovate", "quote": "Mentors reviewed my code line by line. That feedback changed how I build.", "rating": 5 },
+      { "name": "Rahul Verma", "program": "AI & Machine Learning", "role": "ML Engineer @ DataNile", "quote": "Went from zero ML to deploying models in production. The AI track is the real deal.", "rating": 5 },
+      { "name": "Sneha Iyer", "program": ".NET Development", "role": "Full-Stack @ Brightloop", "quote": "Placement support set up four interviews for me. The career team never gave up.", "rating": 4 },
+      { "name": "Karan Patel", "program": "Python Development", "role": "Automation Eng @ Skylark", "quote": "The Python + automation modules mirror exactly what my job needs today.", "rating": 5 }
+    ]
+  },
+  "tech": {
+    "eyebrow": "Our stack",
+    "title_lead": "Technologies we",
+    "title_grad": "master",
+    "lead": "A continuously evolving toolkit across the entire modern stack.",
+    "ring": [
+      { "name": "HTML5", "icon": "fa-brands fa-html5", "color": "#E34F26" },
+      { "name": "CSS3", "icon": "fa-brands fa-css3-alt", "color": "#1572B6" },
+      { "name": "JavaScript", "icon": "fa-brands fa-js", "color": "#F7DF1E" },
+      { "name": "React", "icon": "fa-brands fa-react", "color": "#61DAFB" },
+      { "name": "Angular", "icon": "fa-brands fa-angular", "color": "#DD0031" },
+      { "name": "Bootstrap", "icon": "fa-brands fa-bootstrap", "color": "#7952B3" },
+      { "name": "Node.js", "icon": "fa-brands fa-node-js", "color": "#339933" },
+      { "name": "Python", "icon": "fa-brands fa-python", "color": "#3776AB" },
+      { "name": "Java", "icon": "fa-brands fa-java", "color": "#F89820" },
+      { "name": "PHP", "icon": "fa-brands fa-php", "color": "#777BB4" },
+      { "name": ".NET", "icon": "fa-brands fa-microsoft", "color": "#512BD4" },
+      { "name": "AWS", "icon": "fa-brands fa-aws", "color": "#FF9900" },
+      { "name": "Azure", "icon": "fa-brands fa-microsoft", "color": "#0078D4" },
+      { "name": "Docker", "icon": "fa-brands fa-docker", "color": "#2496ED" },
+      { "name": "GitHub", "icon": "fa-brands fa-github", "color": "#9aa6c7" },
+      { "name": "MySQL", "icon": "fa-solid fa-database", "color": "#4479A1" },
+      { "name": "MongoDB", "icon": "fa-solid fa-leaf", "color": "#47A248" },
+      { "name": "AI / ML", "icon": "fa-solid fa-robot", "color": "#10A37F" }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "title_lead": "Let's build something",
+    "title_grad": "great",
+    "lead": "Tell us about your project or learning goals. We respond within one business day.",
+    "services": [
+      "Web Application Development", "Mobile App Development", "API Development & Integration",
+      "Business Process Automation", "CRM & ERP Solutions", "E-Commerce Development",
+      "Professional Training", "Internship Program"
+    ]
+  }
+}

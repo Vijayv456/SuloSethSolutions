@@ -1,0 +1,15 @@
+{% extends "admin/base_admin.html" %}
+{% block body %}
+<div class="glass panel">
+  <h3>Website Content (CMS)</h3>
+  <p style="color:var(--muted)">Every page renders from these JSON documents. Edit a document to change the live website instantly — no code or restart required.</p>
+</div>
+<div class="stat-grid">
+  {% for p in pages %}
+  <a href="/admin/content/{{ p.key }}" class="glass stat-tile">
+    <div class="lbl"><span><i class="fa-solid fa-file-lines"></i></span> {{ p.key | capitalize }}</div>
+    <div style="margin-top:.6rem;color:var(--cyan);font-size:.85rem">Edit {{ p.file }} →</div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,129 @@
+{
+  "meta_title": "Services — SuloSethuSolution",
+  "meta_description": "Web, mobile, API, automation, data, CRM/ERP, maintenance and e-commerce development services.",
+  "hero": {
+    "pill_icon": "fa-solid fa-layer-group",
+    "pill": "Our services",
+    "title_lead": "Our Professional",
+    "title_grad": "Services",
+    "subtitle": "Helping businesses build, automate, and scale with software engineered around their goals.",
+    "buttons": [
+      { "label": "Request a Quote", "href": "#quote", "style": "glow" },
+      { "label": "Talk to Us", "href": "/contact", "style": "ghost" }
+    ]
+  },
+  "code_tabs": {
+    "filename": "services.py",
+    "tabs": [
+      {
+        "id": "build",
+        "label": "Build",
+        "icon": "fa-solid fa-code",
+        "code": [
+          "def build_app(idea):",
+          "    design_ui(idea)",
+          "    develop(idea)",
+          "    return \"shipped\""
+        ],
+        "items": ["Web Applications", "Mobile Apps (iOS / Android)", "Custom Portals & Dashboards", "SaaS Products"]
+      },
+      {
+        "id": "automate",
+        "label": "Automate",
+        "icon": "fa-solid fa-gears",
+        "code": [
+          "def automate(workflow):",
+          "    remove_manual_steps(workflow)",
+          "    schedule_reports(workflow)",
+          "    return \"optimized\""
+        ],
+        "items": ["Workflow Automation", "Data Scraping & Processing", "Report Automation", "API & Third-party Integration"]
+      },
+      {
+        "id": "scale",
+        "label": "Scale",
+        "icon": "fa-solid fa-arrow-trend-up",
+        "code": [
+          "def scale(business):",
+          "    deploy_cloud(business)",
+          "    monitor(business)",
+          "    return \"growing\""
+        ],
+        "items": ["CRM & ERP Solutions", "E-Commerce Platforms", "Cloud & DevOps", "Maintenance & Support"]
+      }
+    ]
+  },
+  "growth": {
+    "eyebrow": "What we deliver",
+    "title_lead": "Services built for",
+    "title_grad": "growth",
+    "lead": "Scroll through our capabilities — each one a building block of your digital success.",
+    "services": [
+      { "icon": "fa-solid fa-globe", "visual": "browser", "title": "Web Development", "desc": "Custom web platforms, portals, and SaaS products engineered to scale with clean, maintainable code.", "features": ["Responsive UI", "Admin Dashboards", "SaaS Applications", "SEO Optimized", "PWA Support", "Cloud Deployment"] },
+      { "icon": "fa-solid fa-mobile-screen-button", "visual": "phone", "title": "Mobile App Development", "desc": "Native-feel Android and iOS apps from a single efficient cross-platform codebase.", "features": ["Android Development", "iOS Development", "Flutter Applications", "Cross-Platform Solutions", "App Store Deployment", "Performance Optimization"] },
+      { "icon": "fa-solid fa-plug", "visual": "network", "title": "API Development & Integration", "desc": "Secure, well-documented REST & GraphQL APIs and seamless third-party integrations.", "features": ["REST & GraphQL APIs", "Third-Party Integrations", "Payment Gateways", "Webhooks", "OAuth & JWT", "API Documentation"] },
+      { "icon": "fa-solid fa-building", "visual": "dashboard", "title": "CRM & ERP Solutions", "desc": "Unified platforms to manage customers, inventory, and teams from a single place.", "features": ["Customer Management", "Inventory Management", "HR Management", "Sales Pipeline", "Custom Modules", "Role-based Access"] },
+      { "icon": "fa-solid fa-gears", "visual": "flow", "title": "Business Process Automation", "desc": "Automate repetitive workflows and reporting to cut cost and manual effort.", "features": ["Workflow Automation", "Report Automation", "Process Optimization", "Scheduled Jobs", "Notification Bots", "Approval Flows"] },
+      { "icon": "fa-solid fa-table-cells", "visual": "data", "title": "Data Scraping & Processing", "desc": "Reliable data collection, cleaning, and transformation pipelines built to scale.", "features": ["Data Collection", "Data Cleaning", "Data Transformation", "ETL Pipelines", "Web Scraping", "Data Visualization"] },
+      { "icon": "fa-solid fa-cloud", "visual": "cloud", "title": "Cloud & DevOps Solutions", "desc": "Scalable cloud infrastructure with CI/CD, containers, and proactive monitoring.", "features": ["AWS & Azure", "Docker & Kubernetes", "CI/CD Pipelines", "Infrastructure as Code", "Monitoring & Alerts", "Auto-scaling"] },
+      { "icon": "fa-solid fa-graduation-cap", "visual": "learn", "title": "Training Programs", "desc": "Industry-oriented technical training with live sessions, projects, and certification.", "features": ["Live Instructor Sessions", "Hands-on Projects", "Industry Certification", "Weekly Assignments", "Doubt Support", "Placement Assistance"] },
+      { "icon": "fa-solid fa-rocket", "visual": "team", "title": "Internship Programs", "desc": "Real-world project exposure with mentorship, reviews, and a recognized certificate.", "features": ["Live Projects", "Industry Mentorship", "Weekly Reviews", "Internship Certificate", "Resume Building", "Team Collaboration"] },
+      { "icon": "fa-solid fa-briefcase", "visual": "career", "title": "Placement Assistance", "desc": "Resume building, mock interviews, and referrals to our hiring-partner network.", "features": ["Resume Preparation", "Mock Interviews", "Career Guidance", "Job Referrals", "Interview Tracking", "Offer Negotiation"] }
+    ]
+  },
+  "services": {
+    "eyebrow": "What we build",
+    "title_lead": "Engineering across the",
+    "title_grad": "full stack",
+    "items": [
+      { "icon": "fa-solid fa-globe", "title": "Web Application Development", "desc": "Custom web platforms built to scale.", "features": ["Custom Portals", "Dashboards", "SaaS Applications"] },
+      { "icon": "fa-solid fa-mobile-screen-button", "title": "Mobile Application Development", "desc": "Apps that feel native on every device.", "features": ["Android Apps", "iOS Apps", "Cross Platform Apps"] },
+      { "icon": "fa-solid fa-plug", "title": "API Development & Integration", "desc": "Connect systems securely and reliably.", "features": ["REST APIs", "Third-Party Integrations", "Payment Gateways"] },
+      { "icon": "fa-solid fa-gears", "title": "Business Process Automation", "desc": "Remove manual work from your operations.", "features": ["Workflow Automation", "Report Automation", "Process Optimization"] },
+      { "icon": "fa-solid fa-table-cells", "title": "Data Scraping & Processing", "desc": "Turn raw data into clean, usable assets.", "features": ["Data Collection", "Data Cleaning", "Data Transformation"] },
+      { "icon": "fa-solid fa-building", "title": "CRM & ERP Solutions", "desc": "Run your business from one platform.", "features": ["Customer Management", "Inventory Management", "HR Management"] },
+      { "icon": "fa-solid fa-shield-halved", "title": "Software Maintenance & Support", "desc": "Keep your systems healthy and current.", "features": ["Bug Fixes", "Enhancements", "Monitoring"] },
+      { "icon": "fa-solid fa-cart-shopping", "title": "E-Commerce Development", "desc": "Sell online with confidence.", "features": ["Online Stores", "Payment Integration", "Order Management"] }
+    ]
+  },
+  "industries": {
+    "eyebrow": "Industries we serve",
+    "title_lead": "Solutions for",
+    "title_grad": "every domain",
+    "items": [
+      { "icon": "fa-solid fa-hospital", "name": "Healthcare" },
+      { "icon": "fa-solid fa-graduation-cap", "name": "Education" },
+      { "icon": "fa-solid fa-cart-shopping", "name": "E-Commerce" },
+      { "icon": "fa-solid fa-truck-fast", "name": "Logistics" },
+      { "icon": "fa-solid fa-building", "name": "Real Estate" },
+      { "icon": "fa-solid fa-credit-card", "name": "Finance" },
+      { "icon": "fa-solid fa-industry", "name": "Manufacturing" },
+      { "icon": "fa-solid fa-rocket", "name": "Startups" }
+    ]
+  },
+  "process": {
+    "eyebrow": "Development process",
+    "title_lead": "How we",
+    "title_grad": "deliver",
+    "lead": "A proven, transparent process — scroll to watch each phase stack into place.",
+    "steps": [
+      { "icon": "fa-solid fa-clipboard-list", "title": "Requirement Gathering", "desc": "We learn your goals, users, and constraints to define a clear, shared scope before a line of code is written.", "activities": ["Stakeholder interviews", "Scope & timeline", "Success metrics"] },
+      { "icon": "fa-solid fa-pen-ruler", "title": "UI/UX Design", "desc": "Wireframes, prototypes, and a polished, on-brand interface validated with you before build.", "activities": ["Wireframes", "Interactive prototypes", "Design system"] },
+      { "icon": "fa-solid fa-code", "title": "Development", "desc": "Clean, tested, maintainable engineering delivered in transparent agile sprints.", "activities": ["Agile sprints", "Clean architecture", "Code reviews"] },
+      { "icon": "fa-solid fa-vial-circle-check", "title": "Testing", "desc": "Rigorous QA across functionality, performance, and security so you ship with confidence.", "activities": ["Functional QA", "Performance testing", "Security checks"] },
+      { "icon": "fa-solid fa-cloud-arrow-up", "title": "Deployment", "desc": "Smooth, automated releases to your cloud or servers with zero-downtime strategies.", "activities": ["CI/CD release", "Cloud setup", "Go-live support"] },
+      { "icon": "fa-solid fa-headset", "title": "Support", "desc": "Proactive monitoring, fast bug fixes, and ongoing enhancements that keep you growing.", "activities": ["Uptime monitoring", "Bug fixes", "Feature enhancements"] }
+    ]
+  },
+  "quote": {
+    "eyebrow": "Request a quote",
+    "title": "Ready to build your next digital solution?",
+    "benefits": ["Free Consultation", "Custom Development", "Fast Delivery", "Ongoing Support"],
+    "service_options": [
+      "Web Application Development", "Mobile Application Development", "API Development & Integration",
+      "Business Process Automation", "Data Scraping & Processing", "CRM & ERP Solutions",
+      "Software Maintenance & Support", "E-Commerce Development"
+    ],
+    "budget_options": ["Under ₹50k", "₹50k – ₹2L", "₹2L – ₹5L", "₹5L – ₹10L", "₹10L+"]
+  }
+}

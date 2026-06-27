@@ -1,0 +1,74 @@
+/* ===================================================================
+   Training page — "Split Reveal" scroll animation.
+   The active service card splits vertically; the two halves slide out
+   (opening-curtain) while the next service emerges from the centre.
+   Pinned, full-viewport, GSAP-driven. Glassmorphism + depth.
+   =================================================================== */
+
+/* stack heading on top + full-width card below (was a 50/50 flex row) */
+.sr-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 5rem 0; position: relative; overflow: hidden; }
+.sr-section > .container { width: 100%; }
+.sr-fallback { display: none; }
+
+.sr-wrap { max-width: 1060px; margin: 1rem auto 0; width: 100%; padding: 0 1.2rem; }
+.sr-stage { position: relative; width: 100%; height: 76vh; max-height: 640px; perspective: 1600px; transform-style: preserve-3d; }
+
+/* shared card visuals — content spans the full 100% card width */
+.sr-card-inner {
+  width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem;
+  text-align: center; padding: 2.4rem clamp(1.5rem, 6vw, 5rem);
+}
+.sr-ic { width: 96px; height: 96px; border-radius: 24px; display: grid; place-items: center; font-size: 2.5rem; background: var(--surface-2); border: 1px solid rgba(59,130,246,.4); box-shadow: 0 0 30px rgba(59,130,246,.4); }
+.sr-ic i { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.sr-card-inner h3 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.6rem); }
+.sr-chips { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; width: 100%; max-width: 100%; }
+.sr-chips span { padding: .4rem .9rem; border-radius: 999px; font-size: .85rem; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); }
+
+/* card surface (back + the two halves share this look) */
+.sr-card, .sr-half {
+  position: absolute; top: 0; bottom: 0; border-radius: 24px;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(59,130,246,.18), transparent 60%),
+    linear-gradient(160deg, rgba(36,30,66,.96), rgba(12,11,26,.98));
+  border: 1px solid rgba(59,130,246,.32);
+  overflow: hidden;
+}
+.sr-card::after, .sr-half::after { content: ''; position: absolute; inset: 0; border-radius: 24px; padding: 1px; background: linear-gradient(135deg, rgba(59,130,246,.7), transparent 45%, transparent 55%, rgba(34,211,238,.5)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: .7; pointer-events: none; }
+
+/* back card = incoming service, centred behind the halves */
+.sr-back { left: 0; right: 0; z-index: 1; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+
+/* the two sliding halves of the current card */
+.sr-half { width: 50%; z-index: 2; box-shadow: 0 24px 70px rgba(0,0,0,.55); will-change: transform; backface-visibility: hidden; }
+.sr-half.left { left: 0; border-radius: 24px 0 0 24px; }
+.sr-half.right { right: 0; border-radius: 0 24px 24px 0; }
+/* glowing inner seam where the card splits */
+.sr-half.left::before { content: ''; position: absolute; top: 6%; bottom: 6%; right: 0; width: 2px; background: var(--purple); box-shadow: 0 0 16px 2px rgba(59,130,246,.7); z-index: 3; }
+.sr-half.right::before { content: ''; position: absolute; top: 6%; bottom: 6%; left: 0; width: 2px; background: var(--purple); box-shadow: 0 0 16px 2px rgba(59,130,246,.7); z-index: 3; }
+
+/* the face holds a full-width card so the two halves read as one card when joined */
+.sr-face { position: absolute; top: 0; bottom: 0; width: 200%; }
+.sr-half.left .sr-face { left: 0; }
+.sr-half.right .sr-face { right: 0; }
+
+/* ambient glow behind the stage */
+.sr-stage::before { content: ''; position: absolute; inset: -50px; background: radial-gradient(circle at 50% 50%, rgba(59,130,246,.2), transparent 65%); filter: blur(34px); z-index: 0; animation: srPulse 3.6s ease-in-out infinite; }
+@keyframes srPulse { 0%,100% { opacity: .45; } 50% { opacity: .85; } }
+
+/* progress dots + hint */
+.sr-dots { display: flex; gap: .5rem; justify-content: center; margin-top: 1.6rem; }
+.sr-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border); transition: all .3s; }
+.sr-dots span.active { background: var(--grad); box-shadow: 0 0 12px rgba(59,130,246,.7); transform: scale(1.3); }
+.sr-hint { text-align: center; color: var(--muted); font-size: .82rem; margin-top: .8rem; letter-spacing: .04em; }
+
+/* ---- Mobile / reduced motion: static grid ---- */
+@media (max-width: 991px) {
+  .sr-section { min-height: auto; display: block; padding: 4.5rem 0; }
+  .sr-wrap { display: none; }
+  .sr-fallback { display: block; }
+}
+.sr-static .sr-wrap { display: none; }
+.sr-static .sr-fallback { display: block; }
+@media (prefers-reduced-motion: reduce) {
+  .sr-stage::before { animation: none !important; }
+}

@@ -1,0 +1,40 @@
+{% extends "admin/base_admin.html" %}
+{% block body %}
+<div class="stat-grid">
+  {% for key, meta in collections.items() %}
+  <a href="/admin/c/{{ key }}" class="glass stat-tile">
+    <div class="lbl"><span><i class="{{ meta.icon }}"></i></span> {{ meta.label }}</div>
+    <div class="num">{{ counts[key] }}</div>
+  </a>
+  {% endfor %}
+  <div class="glass stat-tile">
+    <div class="lbl"><span><i class="fa-solid fa-hourglass-half"></i></span> Pending Review</div>
+    <div class="num">{{ pending }}</div>
+  </div>
+</div>
+
+<div class="glass panel">
+  <h3>Recent Activity</h3>
+  {% if activity %}
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th></th><th>Type</th><th>Name</th><th>Status</th><th>Received</th><th></th></tr></thead>
+      <tbody>
+        {% for a in activity %}
+        <tr>
+          <td><i class="{{ a.icon }}"></i></td>
+          <td>{{ a.collection_label }}</td>
+          <td>{{ a.name }}</td>
+          <td><span class="pill-status s-{{ a.status.split(' ')[0]|lower }}">{{ a.status }}</span></td>
+          <td>{{ a.created_at }}</td>
+          <td><a href="/admin/c/{{ a.collection }}/{{ a.id }}" class="row-link">View →</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p style="color:var(--muted)">No submissions yet. Share your website to start collecting leads — try the contact form on the <a href="/" target="_blank" style="color:var(--cyan)">live site</a>.</p>
+  {% endif %}
+</div>
+{% endblock %}

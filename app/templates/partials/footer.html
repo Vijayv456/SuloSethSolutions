@@ -1,0 +1,38 @@
+{% set company = settings.company if settings and settings.company else site.company %}
+{% set social = settings.social if settings and settings.social else {} %}
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <a class="brand" href="/">
+          <span class="brand-mark">{{ site.brand.mark }}</span>
+          <span class="brand-name">{{ site.brand.name_prefix }}<span class="grad-text">{{ site.brand.name_suffix }}</span></span>
+        </a>
+        <p class="footer-about">{{ site.footer.about }}</p>
+      </div>
+      {% for col in site.footer.columns %}
+      <div class="col-6 col-lg-2">
+        <h4>{{ col.title }}</h4>
+        <ul>{% for link in col.links %}<li><a href="{{ link.href }}">{{ link.label }}</a></li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+      <div class="col-12 col-lg-4">
+        <h4>Contact Info</h4>
+        <div class="footer-contact">
+          <div><i class="fa-solid fa-phone"></i> {{ company.phone }}</div>
+          <div><i class="fa-solid fa-envelope"></i> {{ company.email }}</div>
+          <div><i class="fa-solid fa-location-dot"></i> {{ company.address }}</div>
+        </div>
+        <div class="socials small mt-3">
+          {% for s in site.social %}
+          <a href="{{ social.get(s.label|lower, s.href) if social else s.href }}" aria-label="{{ s.label }}" target="_blank" rel="noopener">{{ s.abbr }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {{ now_year }} {{ site.brand.name }}. All Rights Reserved.</p>
+      <p><a href="/admin">Admin Portal</a></p>
+    </div>
+  </div>
+</footer>

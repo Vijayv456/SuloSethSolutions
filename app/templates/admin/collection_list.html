@@ -1,0 +1,41 @@
+{% extends "admin/base_admin.html" %}
+{% set detail_field = {'service_requests':'service','internship_applications':'program','training_enrollments':'course','contact_messages':'subject'} %}
+{% block body %}
+<form class="toolbar" method="get">
+  <input type="search" name="q" value="{{ q }}" placeholder="Search {{ meta.label|lower }}…" />
+  <select name="status" onchange="this.form.submit()">
+    <option value="">All statuses</option>
+    {% for s in meta.statuses %}<option value="{{ s }}" {{ 'selected' if status == s }}>{{ s }}</option>{% endfor %}
+  </select>
+  <button type="submit" class="btn btn-ghost btn-sm">Filter</button>
+  {% if q or status %}<a href="/admin/c/{{ key }}" class="btn btn-ghost btn-sm">Reset</a>{% endif %}
+  <span class="spacer"></span>
+  <a href="/admin/reports" class="btn btn-ghost btn-sm">Export</a>
+  <span style="color:var(--muted);font-size:.88rem">{{ records|length }} record(s)</span>
+</form>
+
+<div class="glass panel">
+  {% if records %}
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>ID</th><th>Date</th><th>Name</th><th>Email</th><th>{{ detail_field[key]|default('Detail')|capitalize }}</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        {% for r in records %}
+        <tr>
+          <td>#{{ r.id }}</td>
+          <td>{{ r.created_at }}</td>
+          <td><a href="/admin/c/{{ key }}/{{ r.id }}" class="row-link">{{ r.name }}</a></td>
+          <td>{{ r.email }}</td>
+          <td>{{ r.get(detail_field[key], '—') or '—' }}</td>
+          <td><span class="pill-status s-{{ r.status.split(' ')[0]|lower }}">{{ r.status }}</span></td>
+          <td><a href="/admin/c/{{ key }}/{{ r.id }}" class="row-link">View →</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p style="color:var(--muted)">No records match.</p>
+  {% endif %}
+</div>
+{% endblock %}

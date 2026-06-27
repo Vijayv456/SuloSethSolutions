@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in · Admin · {{ site.brand.name }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="/static/css/styles.css?v=4" />
+  <link rel="stylesheet" href="/static/css/themes.css?v=3" />
+  <link rel="stylesheet" href="/static/css/admin.css?v=2" />
+  <script>(function(){try{if(localStorage.getItem('ss-mode')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+</head>
+<body class="admin">
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="login-wrap">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <form class="glass login-card" method="post" action="/admin/login">
+      <a class="brand" href="/"><span class="brand-mark">{{ site.brand.mark }}</span><span class="brand-name">{{ site.brand.name_prefix }}<span class="grad-text">{{ site.brand.name_suffix }}</span></span></a>
+      <h1>Admin Portal</h1>
+      <p class="sub">Sign in to manage your website</p>
+      {% if error %}<div class="flash err">{{ error }}</div>{% endif %}
+      <div class="admin-form" style="gap:.9rem">
+        <div class="field"><label>Username</label><input name="username" value="{{ username or '' }}" required autofocus placeholder="admin" /></div>
+        <div class="field"><label>Password</label><input name="password" type="password" required placeholder="••••••••" /></div>
+        <button type="submit" class="btn btn-glow w-100">Sign In</button>
+      </div>
+      <p class="hint">Default login — admin / admin123 (change it after first sign in)</p>
+    </form>
+  </div>
+  <script src="/static/js/canvas.js"></script>
+  <script>if(window.SS_CANVAS){SS_CANVAS.ambient();}</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* ===================================================================
+   "Services Built for Growth" — pinned, scroll-driven 3-node navigator.
+   Left = vertical wheel (prev / active / next visible). Right = live panel.
+   Uses global design tokens. Plain CSS (no build step).
+   =================================================================== */
+
+.sg-section { min-height: 100vh; display: flex; align-items: center; padding: 5rem 0; position: relative; overflow: hidden; }
+.sg-section > .container { width: 100%; }
+
+.sg-layout { display: grid; grid-template-columns: 340px 1fr; gap: 3rem; align-items: center; }
+
+/* ---- Left navigator (wheel) ---- */
+.sg-nav { position: relative; height: 400px; }
+.sg-line { position: absolute; left: 31px; top: 8%; bottom: 8%; width: 3px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.sg-line-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0; background: var(--grad); box-shadow: var(--glow-cyan); border-radius: 3px; transition: height .35s ease; }
+.sg-track { position: absolute; inset: 0; }
+
+.sg-node {
+  position: absolute; left: 0; right: 0; top: 50%;
+  display: flex; align-items: center; gap: 1.1rem; padding: .4rem .2rem;
+  background: none; border: 0; cursor: pointer; text-align: left;
+  transform: translateY(calc(-50% + var(--rel, 0) * 120px));
+  transition: transform .55s cubic-bezier(.2,.7,.2,1), opacity .5s ease;
+  opacity: 1; will-change: transform;
+}
+.sg-node.is-hidden { opacity: 0; pointer-events: none; }
+.sg-node.is-prev, .sg-node.is-next { opacity: .5; }
+.sg-node-ic {
+  flex: none; width: 66px; height: 66px; border-radius: 18px; display: grid; place-items: center;
+  font-size: 1.5rem; background: var(--surface); border: 1px solid var(--border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s, border-color .45s, background .45s;
+}
+.sg-node-ic i { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.sg-node-t { font-weight: 600; color: var(--muted); font-size: .98rem; transition: color .4s, font-size .4s; }
+.sg-node.is-active .sg-node-ic { transform: scale(1.14); border-color: transparent; background: var(--surface-2); box-shadow: 0 0 0 2px var(--cyan), 0 0 30px var(--glow-a), 0 0 60px var(--glow-b); }
+.sg-node.is-active .sg-node-t { color: var(--text); font-size: 1.12rem; font-family: 'Sora'; }
+
+/* ---- Right panel ---- */
+.sg-panel { padding: 2.4rem 2.3rem; position: relative; overflow: hidden; min-height: 380px; }
+.sg-panel::before { content: ''; position: absolute; inset: 0; background: var(--grad-soft); opacity: .35; pointer-events: none; }
+.sg-panel > * { position: relative; z-index: 1; }
+.sg-num { font-family: 'Sora'; letter-spacing: .14em; color: var(--muted); font-size: .85rem; margin-bottom: 1.2rem; }
+.sg-num b { font-size: 1.5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.sg-ic { font-size: 2.8rem; margin-bottom: 1rem; line-height: 1; }
+.sg-ic i { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 14px var(--glow-a)); }
+.sg-panel h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 0 0 .8rem; }
+.sg-desc { color: var(--muted); font-size: 1.05rem; margin: 0 0 1.5rem; max-width: 560px; }
+.sg-feats { list-style: none; padding: 0; margin: 0 0 1.8rem; display: grid; grid-template-columns: 1fr 1fr; gap: .7rem 1.4rem; }
+.sg-feats li { display: flex; align-items: center; gap: .6rem; color: var(--text); font-size: .95rem; }
+.sg-feats li i { color: var(--cyan); font-size: .9rem; flex: none; }
+.sg-cta { margin-top: .3rem; }
+
+/* swap-in animation when active changes */
+.sg-panel.swap .sg-ic, .sg-panel.swap h3, .sg-panel.swap .sg-desc, .sg-panel.swap .sg-feats, .sg-panel.swap .sg-num { animation: sgSwap .45s cubic-bezier(.2,.7,.2,1); }
+@keyframes sgSwap { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* ---- Tablet / mobile: static, tappable, no pin ---- */
+@media (max-width: 991px) {
+  .sg-section { min-height: auto; display: block; padding: 4.5rem 0; }
+  .sg-layout { grid-template-columns: 1fr; gap: 1.6rem; }
+  .sg-nav { height: auto; }
+  .sg-line { display: none; }
+  .sg-track { position: static; display: flex; gap: .7rem; overflow-x: auto; padding-bottom: .6rem; scrollbar-width: none; }
+  .sg-track::-webkit-scrollbar { display: none; }
+  .sg-node { position: static; transform: none !important; opacity: 1 !important; flex: none; flex-direction: column; gap: .5rem; width: 110px; text-align: center; padding: .6rem; }
+  .sg-node-t { font-size: .78rem !important; }
+  .sg-node.is-active .sg-node-t { font-size: .82rem !important; }
+  .sg-feats { grid-template-columns: 1fr; }
+  .sg-panel { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sg-node, .sg-node-ic, .sg-line-fill { transition: none !important; }
+  .sg-panel.swap .sg-ic, .sg-panel.swap h3, .sg-panel.swap .sg-desc, .sg-panel.swap .sg-feats, .sg-panel.swap .sg-num { animation: none !important; }
+}

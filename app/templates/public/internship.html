@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block head_extra %}<link rel="stylesheet" href="/static/css/orbit.css?v=2" />{% endblock %}
+{% block content %}
+
+<header class="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container hero-inner">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 hero-left">
+        <span class="pill reveal"><i class="{{ page.hero.pill_icon }}"></i> {{ page.hero.pill }}</span>
+        <h1 class="hero-title reveal">{{ page.hero.title_lead }} <span class="grad-text">{{ page.hero.title_grad }}</span></h1>
+        <p class="hero-sub reveal">{{ page.hero.subtitle }}</p>
+        {{ m.buttons(page.hero.buttons) }}
+        <div class="hero-trust reveal">
+          {% for st in page.hero.stats %}<div><strong data-count="{{ st.value }}" data-suffix="{{ st.suffix }}">0</strong><span>{{ st.label }}</span></div>{% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-6 hero-right">
+        <div class="hero-visual" data-parallax>
+          {% include "partials/code_tabs.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRAMS -->
+<section id="programs" class="section">
+  <div class="container">
+    {{ m.section_head(page.programs) }}
+    <div class="grid grid-4">
+      {% for p in page.programs['items'] %}
+      <article class="glass prog-card" data-reveal><div class="prog-icon"><i class="{{ p.icon }}"></i></div><h3>{{ p.title }}</h3><div class="chips">{% for s in p.skills %}<span>{{ s }}</span>{% endfor %}</div></article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section section-alt">
+  <div class="container">
+    {{ m.section_head(page.benefits) }}
+    <div class="grid grid-3">
+      {% for b in page.benefits['items'] %}
+      <article class="glass why-card" data-reveal><span class="why-ic"><i class="{{ b.icon }}"></i></span><div><h4>{{ b.title }}</h4><p>{{ b.desc }}</p></div></article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY (Circular Career Orbit) -->
+{% include "partials/orbit.html" %}
+
+{{ m.accordion(page.faqs) }}
+
+<!-- APPLY -->
+<section id="apply" class="section">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5" data-reveal>
+        <span class="eyebrow">{{ page.apply.eyebrow }}</span>
+        <h2 class="section-title">{{ page.apply.title }}</h2>
+        <ul class="check-list">{% for h in page.apply.highlights %}<li>{{ h }}</li>{% endfor %}</ul>
+        <div class="hero-trust">{% for st in page.apply.stats %}<div><strong data-count="{{ st.value }}" data-suffix="{{ st.suffix }}">0</strong><span>{{ st.label }}</span></div>{% endfor %}</div>
+      </div>
+      <div class="col-lg-7" data-reveal>
+        <form class="glass glass-form" action="/submit/internship" method="post" enctype="multipart/form-data" data-ajax novalidate>
+          <div class="form-grid">
+            <div class="field"><label>Full Name</label><input name="full_name" required placeholder="Your name" /></div>
+            <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com" /></div>
+            <div class="field"><label>Mobile Number</label><input name="phone" type="tel" placeholder="+91 ..." /></div>
+            <div class="field"><label>College Name</label><input name="college" placeholder="College / University" /></div>
+            <div class="field"><label>Degree</label><input name="degree" placeholder="e.g. B.Tech CSE" /></div>
+            <div class="field"><label>Graduation Year</label><input name="graduation_year" placeholder="e.g. 2026" /></div>
+            <div class="field"><label>Internship Program</label><select name="program"><option value="" disabled selected>Choose…</option>{% for p in page.apply.program_options %}<option>{{ p }}</option>{% endfor %}</select></div>
+            <div class="field"><label>Duration</label><select name="duration"><option value="" disabled selected>Select…</option>{% for d in page.apply.duration_options %}<option>{{ d }}</option>{% endfor %}</select></div>
+            <div class="field full"><label>Upload Resume (PDF/DOC)</label><input name="resume" type="file" accept=".pdf,.doc,.docx" /></div>
+            <div class="field full"><label>Message</label><textarea name="message" rows="3" placeholder="Anything you'd like us to know…"></textarea></div>
+            <div class="field full"><button type="submit" class="btn btn-glow w-100">Apply For Internship</button><p class="form-note" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/orbit.js?v=3"></script>{% endblock %}

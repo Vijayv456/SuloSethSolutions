@@ -1,0 +1,147 @@
+{
+  "meta_title": "Training — SuloSethuSolution",
+  "meta_description": "Build skills employers demand with live sessions, projects, mentorship, certification and placement assistance.",
+  "hero": {
+    "pill_icon": "fa-solid fa-graduation-cap",
+    "pill": "Learning command center",
+    "title_lead": "Build Skills That",
+    "title_grad": "Employers Demand",
+    "subtitle": "Master in-demand technologies through practical training, live projects, expert mentorship, and career-focused learning paths.",
+    "buttons": [
+      { "label": "Explore Courses", "href": "#programs", "style": "glow" },
+      { "label": "Enroll Now", "href": "#enroll", "style": "ghost" }
+    ],
+    "stats": [
+      { "value": 1000, "suffix": "+", "label": "Students Trained" },
+      { "value": 50, "suffix": "+", "label": "Courses" },
+      { "value": 95, "suffix": "%", "label": "Completion" }
+    ]
+  },
+  "code_tabs": {
+    "filename": "training.py",
+    "tabs": [
+      {
+        "id": "classes",
+        "label": "Live Classes",
+        "icon": "fa-solid fa-video",
+        "code": [
+          "def teach(learner):",
+          "    live_sessions(learner)",
+          "    hands_on_practice(learner)",
+          "    return \"learning\""
+        ],
+        "items": ["Instructor-led Live Sessions", "Full Stack · Python · .NET · Java", "Hands-on Exercises", "Doubt-clearing Support"]
+      },
+      {
+        "id": "projects",
+        "label": "Projects",
+        "icon": "fa-solid fa-laptop-code",
+        "code": [
+          "def practice(learner):",
+          "    build_real_apps(learner)",
+          "    weekly_assignments(learner)",
+          "    return \"confident\""
+        ],
+        "items": ["Real-world Projects", "Weekly Assignments", "Code Reviews", "Portfolio Building"]
+      },
+      {
+        "id": "certify",
+        "label": "Certification",
+        "icon": "fa-solid fa-certificate",
+        "code": [
+          "def certify(learner):",
+          "    pass_assessment(learner)",
+          "    issue_certificate(learner)",
+          "    return \"certified\""
+        ],
+        "items": ["Industry-recognized Certificate", "Skill Assessment", "Placement Assistance", "Career Guidance"]
+      }
+    ]
+  },
+  "programs": {
+    "eyebrow": "Training programs",
+    "title_lead": "Interactive",
+    "title_grad": "learning tracks",
+    "lead": "Master industry-ready technologies through hands-on training, live projects, and mentorship.",
+    "items": [
+      { "icon": "fa-solid fa-layer-group", "title": "Full Stack Development", "skills": ["HTML", "CSS", "JavaScript", "React", "Backend", "Database"] },
+      { "icon": "fa-brands fa-python", "title": "Python Training", "skills": ["Python Fundamentals", "Automation", "APIs", "Data Processing"] },
+      { "icon": "fa-brands fa-microsoft", "title": ".NET Training", "skills": ["C#", "ASP.NET Core", "SQL Server", "APIs"] },
+      { "icon": "fa-brands fa-java", "title": "Java Training", "skills": ["Core Java", "Spring Boot", "REST APIs"] },
+      { "icon": "fa-brands fa-react", "title": "React Training", "skills": ["Components", "Hooks", "Redux", "APIs"] },
+      { "icon": "fa-brands fa-angular", "title": "Angular Training", "skills": ["TypeScript", "Angular Framework", "Services"] },
+      { "icon": "fa-solid fa-mobile-screen-button", "title": "Mobile App Development", "skills": ["Flutter", "React Native", "Android"] },
+      { "icon": "fa-solid fa-building", "title": "Corporate Training", "skills": ["Team Upskilling", "Enterprise Solutions"] }
+    ]
+  },
+  "roadmaps": {
+    "eyebrow": "Learning roadmap",
+    "title_lead": "From beginner to",
+    "title_grad": "expert",
+    "tracks": [
+      { "name": "Full Stack", "stages": ["Beginner", "Fundamentals", "Projects", "Advanced Concepts", "Live Project", "Certification", "Expert Level"] },
+      { "name": "Python", "stages": ["Beginner", "Core Python", "Automation", "APIs & Data", "Live Project", "Certification", "Expert Level"] },
+      { "name": ".NET", "stages": ["Beginner", "C# Basics", "ASP.NET Core", "SQL & APIs", "Live Project", "Certification", "Expert Level"] },
+      { "name": "React", "stages": ["Beginner", "Components", "Hooks & State", "Redux & APIs", "Live Project", "Certification", "Expert Level"] }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "Training benefits",
+    "title_lead": "Why train",
+    "title_grad": "with us",
+    "items": [
+      { "icon": "fa-solid fa-video", "title": "Live Sessions", "desc": "Interactive, instructor-led classes." },
+      { "icon": "fa-solid fa-screwdriver-wrench", "title": "Hands-on Exercises", "desc": "Practice every concept you learn." },
+      { "icon": "fa-solid fa-laptop-code", "title": "Projects", "desc": "Build real-world applications." },
+      { "icon": "fa-solid fa-book", "title": "Assignments", "desc": "Weekly skill-building tasks." },
+      { "icon": "fa-solid fa-certificate", "title": "Certification", "desc": "Industry-recognized certification." },
+      { "icon": "fa-solid fa-bullseye", "title": "Placement Assistance", "desc": "Interview preparation and job guidance." }
+    ]
+  },
+  "trainers": {
+    "eyebrow": "Expert mentors",
+    "title_lead": "Learn from",
+    "title_grad": "industry experts",
+    "items": [
+      { "icon": "fa-solid fa-user-tie", "name": "Arun Kumar", "experience": "12+ years", "expertise": [".NET", "Azure", "SQL Server"], "courses": ".NET, Cloud" },
+      { "icon": "fa-solid fa-user-tie", "name": "Divya Raman", "experience": "9+ years", "expertise": ["React", "Node.js", "TypeScript"], "courses": "Full Stack, React" },
+      { "icon": "fa-solid fa-user-tie", "name": "Vikram Nair", "experience": "10+ years", "expertise": ["Python", "ML", "LangChain"], "courses": "Python, AI/ML" },
+      { "icon": "fa-solid fa-user-tie", "name": "Sana Sheikh", "experience": "8+ years", "expertise": ["Java", "Spring Boot", "Microservices"], "courses": "Java, Backend" }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "Student reviews",
+    "title_lead": "Loved by",
+    "title_grad": "our learners",
+    "items": [
+      { "name": "Meera S", "course": "Full Stack", "role": "Developer @ Webly", "quote": "The roadmap made everything click. I finally understand how the whole stack fits together.", "rating": 5 },
+      { "name": "Joseph T", "course": "Python", "role": "Analyst @ Datacore", "quote": "Hands-on from day one. The automation projects are exactly what my job needed.", "rating": 5 },
+      { "name": "Anjali R", "course": "React", "role": "Frontend @ Pixelworks", "quote": "Best mentors I've had. Code reviews leveled me up fast.", "rating": 4 },
+      { "name": "Suresh B", "course": ".NET", "role": "Engineer @ Corebyte", "quote": "Enterprise-grade content and real placement help. Worth every rupee.", "rating": 5 }
+    ]
+  },
+  "outcomes": {
+    "eyebrow": "Training outcomes",
+    "title_lead": "Results that",
+    "title_grad": "speak",
+    "stats": [
+      { "value": 1000, "suffix": "+", "label": "Students Trained" },
+      { "value": 50, "suffix": "+", "label": "Courses Delivered" },
+      { "value": 95, "suffix": "%", "label": "Completion Rate" },
+      { "value": 90, "suffix": "%", "label": "Career Growth Success" }
+    ]
+  },
+  "enroll": {
+    "eyebrow": "Enroll now",
+    "title": "Smart enrollment portal",
+    "highlights": ["Live Sessions", "Industry Experts", "Real Projects", "Certification", "Placement Support"],
+    "stats": [
+      { "value": 1000, "suffix": "+", "label": "Students Trained" },
+      { "value": 50, "suffix": "+", "label": "Courses Available" },
+      { "value": 90, "suffix": "%", "label": "Placement Success" }
+    ],
+    "course_options": ["Full Stack Development", "Python Training", ".NET Training", "Java Training", "React Training", "Angular Training", "Mobile App Development", "Corporate Training"],
+    "experience_options": ["Beginner", "Intermediate", "Advanced"],
+    "mode_options": ["Online", "Offline"]
+  }
+}

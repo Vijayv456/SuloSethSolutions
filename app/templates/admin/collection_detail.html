@@ -1,0 +1,49 @@
+{% extends "admin/base_admin.html" %}
+{% set hidden = ['id','status','notes','updated_at','resume'] %}
+{% block body %}
+<a href="/admin/c/{{ key }}" style="color:var(--muted)">← Back to {{ meta.label }}</a>
+<div class="grid-2col" style="margin-top:1rem;align-items:start">
+  <div class="glass panel">
+    <h3>{{ meta.singular }} #{{ rec.id }}</h3>
+    <dl class="kv">
+      <dt>Received</dt><dd>{{ rec.created_at }}</dd>
+      {% for k, v in rec.items() if k not in hidden %}
+      <dt>{{ k.replace('_',' ')|capitalize }}</dt><dd>{{ v if v else '—' }}</dd>
+      {% endfor %}
+      {% if rec.resume %}<dt>Resume</dt><dd><a href="/static/{{ rec.resume }}" target="_blank" style="color:var(--cyan)"><i class="fa-solid fa-file-arrow-down"></i> Download / Preview</a></dd>{% endif %}
+    </dl>
+  </div>
+
+  <div>
+    <div class="glass panel">
+      <h3>Status</h3>
+      <p style="margin:0 0 .8rem"><span class="pill-status s-{{ rec.status.split(' ')[0]|lower }}">{{ rec.status }}</span></p>
+      <form method="post" action="/admin/c/{{ key }}/{{ rec.id }}/status" class="admin-form" style="gap:.7rem">
+        <div class="field"><label>Update status</label>
+          <select name="status">{% for s in meta.statuses %}<option value="{{ s }}" {{ 'selected' if rec.status == s }}>{{ s }}</option>{% endfor %}</select>
+        </div>
+        <button class="btn btn-glow btn-sm" type="submit">Update Status</button>
+      </form>
+      <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
+        <a class="btn btn-ghost btn-sm" href="mailto:{{ rec.email }}?subject=Re: your {{ meta.singular|lower }}"><i class="fa-solid fa-envelope"></i> Send Email</a>
+        <form method="post" action="/admin/c/{{ key }}/{{ rec.id }}/delete" onsubmit="return confirm('Delete this record permanently?')">
+          <button class="btn btn-ghost btn-sm" type="submit" style="border-color:rgba(255,133,133,.4);color:#ff9a9a"><i class="fa-solid fa-trash"></i> Delete</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="glass panel">
+      <h3>Notes</h3>
+      {% for n in rec.notes %}
+      <div class="note">{{ n.text }}<small>{{ n.author }} · {{ n.at }}</small></div>
+      {% else %}
+      <p style="color:var(--muted);font-size:.9rem">No notes yet.</p>
+      {% endfor %}
+      <form method="post" action="/admin/c/{{ key }}/{{ rec.id }}/note" class="admin-form" style="gap:.6rem;margin-top:.8rem">
+        <textarea name="note" rows="2" placeholder="Add an internal note…"></textarea>
+        <button class="btn btn-ghost btn-sm" type="submit">Add Note</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{# Interactive tabbed code-editor window. Prefers page-specific tabs,
+   falls back to the global site.code_tabs. #}
+{% set ct = page.code_tabs or site.code_tabs %}
+<div class="glass code-window code-tabs float-a" data-code-tabs>
+  <div class="code-top">
+    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <span class="code-title">{{ ct.filename }}</span>
+  </div>
+  <div class="ct-tabs" role="tablist">
+    {% for t in ct.tabs %}
+    <button type="button" class="ct-tab {{ 'active' if loop.first }}" data-tab="{{ t.id }}" role="tab" aria-selected="{{ 'true' if loop.first else 'false' }}">
+      <i class="{{ t.icon }}"></i><span>{{ t.label }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  <div class="ct-panels">
+    {% for t in ct.tabs %}
+    <div class="ct-panel {{ 'active' if loop.first }}" data-panel="{{ t.id }}" role="tabpanel">
+      <pre class="ct-code"><code>{% for line in t.code %}{{ line }}{{ "\n" if not loop.last }}{% endfor %}</code></pre>
+      <ul class="ct-items">
+        {% for it in t['items'] %}<li><i class="fa-solid fa-circle-check"></i> {{ it }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</div>

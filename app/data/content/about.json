@@ -1,0 +1,71 @@
+{
+  "meta_title": "About — SuloSethuSolution",
+  "meta_description": "Who we are, what we do, our vision, mission, values and process.",
+  "hero": {
+    "pill_icon": "fa-solid fa-circle-info",
+    "pill": "About us",
+    "title_lead": "We build software —",
+    "title_grad": "and the people who build it",
+    "subtitle": "SuloSethuSolution is a technology and learning partner helping businesses grow through software, and helping students and professionals build careers through training and internships."
+  },
+  "who": {
+    "eyebrow": "Who we are",
+    "title": "A digital studio with a learning heart",
+    "body": "Founded by engineers and educators, SuloSethuSolution unites three disciplines under one roof: shipping production software for clients, training the next generation of developers, and running industry-focused internship programs. Every course is taught by people who build real systems, and every student gets to work on the kind of projects our clients pay for.",
+    "badges": ["Software Development", "Professional Training", "Industry Internships", "Career Growth"]
+  },
+  "what_we_do": {
+    "eyebrow": "What we do",
+    "title": "Three core areas, one mission",
+    "items": [
+      { "icon": "fa-solid fa-laptop-code", "title": "Software Development", "desc": "Building scalable, reliable software solutions for businesses of every size." },
+      { "icon": "fa-solid fa-graduation-cap", "title": "Training Programs", "desc": "Industry-oriented technical training that turns beginners into professionals." },
+      { "icon": "fa-solid fa-rocket", "title": "Internship Programs", "desc": "Real-world project exposure with mentorship and placement support." }
+    ]
+  },
+  "why_exist": {
+    "eyebrow": "Why we exist",
+    "quote": "We believe technology should not only solve business problems, but also create opportunities for students and future professionals.",
+    "by": "— The SuloSethuSolution Team"
+  },
+  "vision": {
+    "eyebrow": "Our vision",
+    "title": "Where we're headed",
+    "statement": "To become a trusted technology and learning partner that empowers businesses and individuals through innovation, education, and digital transformation.",
+    "milestones": ["Today", "Innovation", "Education", "Digital Transformation", "Future Success"]
+  },
+  "mission": {
+    "eyebrow": "Our mission",
+    "title": "What drives us every day",
+    "items": [
+      "Deliver quality software solutions.",
+      "Bridge the gap between academics and industry.",
+      "Provide practical, hands-on learning experiences.",
+      "Support career growth and business success."
+    ]
+  },
+  "values": {
+    "eyebrow": "Core values",
+    "title": "What we stand for",
+    "items": [
+      { "icon": "fa-solid fa-lightbulb", "name": "Innovation", "desc": "Creating modern digital solutions through continuous improvement." },
+      { "icon": "fa-solid fa-handshake", "name": "Integrity", "desc": "Honest, transparent relationships with clients and students." },
+      { "icon": "fa-solid fa-trophy", "name": "Excellence", "desc": "Raising the bar on quality in everything we ship and teach." },
+      { "icon": "fa-solid fa-people-group", "name": "Collaboration", "desc": "Great outcomes come from working closely together." },
+      { "icon": "fa-solid fa-book-open", "name": "Continuous Learning", "desc": "We grow by always learning and sharing knowledge." }
+    ]
+  },
+  "process": {
+    "eyebrow": "Our process",
+    "title": "From idea to support",
+    "steps": ["Discover", "Plan", "Develop", "Test", "Deploy", "Support"]
+  },
+  "cta": {
+    "title": "Ready to work with us?",
+    "subtitle": "Whether it's a project, a course, or an internship — let's talk.",
+    "buttons": [
+      { "label": "Contact Us", "href": "/contact", "style": "glow" },
+      { "label": "Explore Services", "href": "/services", "style": "ghost" }
+    ]
+  }
+}
