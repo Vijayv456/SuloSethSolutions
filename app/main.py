@@ -4,12 +4,15 @@ Run with::
 
     uvicorn app.main:app --reload
 
-Public site is served at ``/`` and the admin portal at ``/admin``.
+Public site is served at "/" and the admin portal at "/admin".
 """
+
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
@@ -18,42 +21,69 @@ from .routes import admin as admin_routes
 from .routes import public as public_routes
 from .templating import render
 
-app = FastAPI(title="SuloSethuSolution", docs_url=None, redoc_url=None)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application startup/shutdown."""
+
+    # Create directories only when running locally.
+    config.ensure_dirs()
+
+    # Create default admin if it doesn't exist.
+    auth.ensure_default_admin()
+
+    yield
+
+    # Shutdown code (if needed)
+    pass
+
+
+app = FastAPI(
+    title="SuloSethuSolution",
+    docs_url=None,
+    redoc_url=None,
+    lifespan=lifespan,
+)
 
 app.add_middleware(
     SessionMiddleware,
     secret_key=config.SECRET_KEY,
     session_cookie=config.SESSION_COOKIE,
-    max_age=60 * 60 * 8,  # 8h admin sessions
+    max_age=60 * 60 * 8,
 )
-
-
-@app.on_event("startup")
-def _startup() -> None:
-    config.ensure_dirs()
-    auth.ensure_default_admin()
 
 
 @app.middleware("http")
 async def revalidate_static(request: Request, call_next):
-    """Ask browsers to revalidate static assets so edits show up immediately."""
+    """Disable browser cache for static files."""
+
     response = await call_next(request)
+
     if request.url.path.startswith("/static"):
-        response.headers["Cache-Control"] = "no-cache, max-age=0, must-revalidate"
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+
     return response
 
 
-config.ensure_dirs()
-app.mount("/static", StaticFiles(directory=str(config.STATIC_DIR)), name="static")
+app.mount(
+    "/static",
+    StaticFiles(directory=str(config.STATIC_DIR)),
+    name="static",
+)
 
 app.include_router(public_routes.router)
 app.include_router(admin_routes.router)
 
 
 @app.exception_handler(404)
-async def not_found(request: Request, exc):  # noqa: ANN001
+async def not_found(request: Request, exc):
     if request.url.path.startswith("/admin"):
-        from fastapi.responses import RedirectResponse
-
         return RedirectResponse("/admin/dashboard", status_code=302)
-    return render(request, "public/404.html", {"page_title": "Page not found"})
+
+    return render(
+        request,
+        "public/404.html",
+        {"page_title": "Page not found"},
+    )
