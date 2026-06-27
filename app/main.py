@@ -27,11 +27,11 @@ app.add_middleware(
     max_age=60 * 60 * 8,  # 8h admin sessions
 )
 
-"""
+
 @app.on_event("startup")
 def _startup() -> None:
     config.ensure_dirs()
-    auth.ensure_default_admin()"""
+    auth.ensure_default_admin()
 
 
 @app.middleware("http")
@@ -44,7 +44,7 @@ async def revalidate_static(request: Request, call_next):
 
 
 config.ensure_dirs()
-#app.mount("/static", StaticFiles(directory=str(config.STATIC_DIR)), name="static")
+app.mount("/static", StaticFiles(directory=str(config.STATIC_DIR)), name="static")
 
 app.include_router(public_routes.router)
 app.include_router(admin_routes.router)
