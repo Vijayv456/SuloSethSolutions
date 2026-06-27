@@ -70,8 +70,5 @@ SETTINGS_FILE = DATA_DIR / "settings.json"
 
 
 def ensure_dirs() -> None:
-    # Skip creating directories on Vercel.
-    if os.getenv("VERCEL"):
-        return
     for d in (DATA_DIR, CONTENT_DIR, SUBMISSIONS_DIR, UPLOADS_DIR):
         d.mkdir(parents=True, exist_ok=True)
