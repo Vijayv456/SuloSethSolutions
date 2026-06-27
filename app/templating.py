@@ -13,7 +13,12 @@ from fastapi.templating import Jinja2Templates
 
 from . import auth, config, store
 
-templates = Jinja2Templates(directory=str(config.TEMPLATES_DIR))
+from pathlib import Path
+
+templates = Jinja2Templates(
+    directory=str(Path(config.TEMPLATES_DIR).resolve())
+)
+#templates = Jinja2Templates(directory=str(config.TEMPLATES_DIR))
 
 
 def _nl2br(value: str) -> str:
