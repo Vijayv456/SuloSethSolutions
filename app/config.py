@@ -70,7 +70,5 @@ SETTINGS_FILE = DATA_DIR / "settings.json"
 
 
 def ensure_dirs() -> None:
-    if os.environ.get("VERCEL"):
-        return
     for d in (DATA_DIR, CONTENT_DIR, SUBMISSIONS_DIR, UPLOADS_DIR):
         d.mkdir(parents=True, exist_ok=True)
